@@ -1,0 +1,178 @@
+[
+  {
+    "regDate": "2026/02/20",
+    "contractDate": "",
+    "status": "시작 전",
+    "actualPrice": null,
+    "askingPrice": 9.8,
+    "building": "508",
+    "floor": "13",
+    "size": 59,
+    "note": "• 26/02/20 10 → 9.8\n• 26/07/28 협의\n• 화이트특올수리\n• 확장형"
+  },
+  {
+    "regDate": "2026/02/20",
+    "contractDate": "",
+    "status": "시작 전",
+    "actualPrice": null,
+    "askingPrice": 9.5,
+    "building": "502",
+    "floor": "16",
+    "size": 59,
+    "note": "• 26/02/20 9.2 → 9.5"
+  },
+  {
+    "regDate": "2026/02/20",
+    "contractDate": "",
+    "status": "시작 전",
+    "actualPrice": null,
+    "askingPrice": 9.4,
+    "building": "506",
+    "floor": "6",
+    "size": 59,
+    "note": "• 26/02/20 9.2 → 9.4"
+  },
+  {
+    "regDate": "2026/02/19",
+    "contractDate": "",
+    "status": "시작 전",
+    "actualPrice": null,
+    "askingPrice": 9.2,
+    "building": "511",
+    "floor": "중",
+    "size": 59,
+    "note": "• 26/06/28 입주\n• 올수리"
+  },
+  {
+    "regDate": "2026/02/14",
+    "contractDate": "",
+    "status": "시작 전",
+    "actualPrice": null,
+    "askingPrice": 9.5,
+    "building": "503",
+    "floor": "고",
+    "size": 59,
+    "note": "- 27/02 입주"
+  },
+  {
+    "regDate": "2026/02/14",
+    "contractDate": "",
+    "status": "시작 전",
+    "actualPrice": null,
+    "askingPrice": 9.4,
+    "building": "508",
+    "floor": "7",
+    "size": 59,
+    "note": "- 26/02/14 9.3 → 9.4"
+  },
+  {
+    "regDate": "2026/02/14",
+    "contractDate": "",
+    "status": "시작 전",
+    "actualPrice": null,
+    "askingPrice": 9.4,
+    "building": "506",
+    "floor": "중",
+    "size": 59,
+    "note": "- 26/06 협의"
+  },
+  {
+    "regDate": "2026/02/12",
+    "contractDate": "",
+    "status": "시작 전",
+    "actualPrice": null,
+    "askingPrice": 9.2,
+    "building": "508",
+    "floor": "고",
+    "size": 59,
+    "note": "- 27/12/16 입주\n- 올수리"
+  },
+  {
+    "regDate": "2026/02/12",
+    "contractDate": "",
+    "status": "시작 전",
+    "actualPrice": null,
+    "askingPrice": 9.2,
+    "building": "511",
+    "floor": "9",
+    "size": 59,
+    "note": "- 26/09/12 입주"
+  },
+  {
+    "regDate": "2026/02/03",
+    "contractDate": "",
+    "status": "진행 중",
+    "actualPrice": null,
+    "askingPrice": 9.2,
+    "building": "509",
+    "floor": "중",
+    "size": 59,
+    "note": ""
+  },
+  {
+    "regDate": "2026/01/20",
+    "contractDate": "2026/02/10",
+    "status": "완료",
+    "actualPrice": 8.7,
+    "askingPrice": null,
+    "building": "511",
+    "floor": "5",
+    "size": 59,
+    "note": ""
+  },
+  {
+    "regDate": "2026/01/09",
+    "contractDate": "",
+    "status": "진행 중",
+    "actualPrice": null,
+    "askingPrice": 9.2,
+    "building": "503",
+    "floor": "9",
+    "size": 59,
+    "note": "- 26/01/09 8.9 → 9.2"
+  },
+  {
+    "regDate": "2026/01/06",
+    "contractDate": "2026/01/27",
+    "status": "완료",
+    "actualPrice": 8.4,
+    "askingPrice": 8.8,
+    "building": "503",
+    "floor": "2",
+    "size": 59,
+    "note": "- 26/03/11 입주"
+  },
+  {
+    "regDate": "2025/12/26",
+    "contractDate": "2026/01/16",
+    "status": "완료",
+    "actualPrice": 8.35,
+    "askingPrice": null,
+    "building": "501",
+    "floor": "6",
+    "size": 59,
+    "note": ""
+  },
+  {
+    "regDate": "2025/12/10",
+    "contractDate": "2025/12/31",
+    "status": "완료",
+    "actualPrice": 8.5,
+    "askingPrice": null,
+    "building": "511",
+    "floor": "12",
+    "size": 59,
+    "note": ""
+  },
+  {
+    "regDate": "2025/12/02",
+    "contractDate": "2025/12/23",
+    "status": "완료",
+    "actualPrice": 8.2,
+    "askingPrice": null,
+    "building": "511",
+    "floor": "5",
+    "size": 59,
+    "note": ""
+  }
+]
