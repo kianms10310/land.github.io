@@ -13,9 +13,32 @@
         @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap');
         body { font-family: 'Pretendard', sans-serif; letter-spacing: -0.025em; }
         .tab-active { border-bottom: 3px solid #3b82f6; color: #3b82f6; font-weight: bold; background: #eff6ff; }
-        /* 탭이 많을 때 가로 스크롤을 위한 스타일 */
+        
+        /* 탭 가로 스크롤 및 숨김 처리 */
+        .tabs-container { 
+            -ms-overflow-style: none; 
+            scrollbar-width: none; 
+            scroll-behavior: smooth;
+        }
         .tabs-container::-webkit-scrollbar { display: none; }
-        .tabs-container { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* 좌우 이동 버튼 스타일 */
+        .nav-btn {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.9);
+            z-index: 10;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .nav-btn:hover { background: #f8fafc; color: #3b82f6; }
+        .nav-left { left: 0; border-right: 1px solid #f1f5f9; border-radius: 0.75rem 0 0 0; }
+        .nav-right { right: 0; border-left: 1px solid #f1f5f9; border-radius: 0 0.75rem 0 0; }
     </style>
 </head>
 <body class="bg-slate-50 p-4 md:p-10">
@@ -29,9 +52,17 @@
             <div id="data-count" class="hidden md:block text-sm font-medium text-slate-400 bg-white px-4 py-2 rounded-full shadow-sm border border-slate-100"></div>
         </header>
 
-        <div class="relative mb-6">
-            <div id="tabs-wrapper" class="tabs-container flex overflow-x-auto border-b border-slate-200 bg-white rounded-t-xl shadow-sm whitespace-nowrap">
+        <div class="relative mb-6 bg-white rounded-t-xl shadow-sm border-b border-slate-200">
+            <button onclick="scrollTabs('left')" class="nav-btn nav-left">
+                <i class="fas fa-chevron-left text-slate-400"></i>
+            </button>
+            
+            <div id="tabs-wrapper" class="tabs-container flex overflow-x-auto mx-[40px] whitespace-nowrap">
                 </div>
+
+            <button onclick="scrollTabs('right')" class="nav-btn nav-right">
+                <i class="fas fa-chevron-right text-slate-400"></i>
+            </button>
         </div>
 
         <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 mb-8">
@@ -64,7 +95,6 @@
     </div>
 
     <script>
-        // --- 탭 설정 변수 (이곳에 아파트를 추가하세요) ---
         const tabsConfig = [
             { id: 'sinjung1', name: '신정마을1단지', file: './data/sinjung1.json' },
             { id: 'sinjung7', name: '신정마을7단지', file: './data/sinjung7.json' },
@@ -84,13 +114,11 @@
         let currentSize = null;
         let sortConfig = { key: 'regDate', direction: 'desc' };
 
-        // 페이지 로드 시 초기화
         window.onload = () => {
             initTabs();
             loadData(tabsConfig[0].file, tabsConfig[0].id);
         };
 
-        // 탭 메뉴 동적 생성
         function initTabs() {
             const wrapper = document.getElementById('tabs-wrapper');
             wrapper.innerHTML = tabsConfig.map(tab => `
@@ -102,18 +130,25 @@
             `).join('');
         }
 
+        // 탭 가로 스크롤 함수
+        function scrollTabs(direction) {
+            const wrapper = document.getElementById('tabs-wrapper');
+            const scrollAmount = 250; // 한 번 클릭 시 이동할 픽셀
+            if (direction === 'left') {
+                wrapper.scrollLeft -= scrollAmount;
+            } else {
+                wrapper.scrollLeft += scrollAmount;
+            }
+        }
+
         async function handleTabClick(file, id) {
-            // 모든 탭 스타일 초기화
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('tab-active'));
-            // 클릭한 탭 활성화
             document.getElementById(`btn-${id}`).classList.add('tab-active');
-            
             await loadData(file, id);
         }
 
         async function loadData(fileName, id) {
             try {
-                // 첫 로드 시 버튼 활성화 표시
                 const activeBtn = document.getElementById(`btn-${id}`);
                 if (activeBtn) activeBtn.classList.add('tab-active');
 
@@ -150,13 +185,13 @@
             });
 
             filteredData = currentRawData.filter(item => item.size === size);
-            document.getElementById('data-count').innerText = `총 ${filteredData.length}건`;
+            const dataCountEl = document.getElementById('data-count');
+            if(dataCountEl) dataCountEl.innerText = `총 ${filteredData.length}건`;
             
             renderChart();
             renderTable();
         }
 
-        // --- 정렬 및 렌더링 로직 (기존과 동일하되 최적화됨) ---
         function handleSort(key) {
             if (sortConfig.key === key) sortConfig.direction = sortConfig.direction === 'asc' ? 'desc' : 'asc';
             else { sortConfig.key = key; sortConfig.direction = 'desc'; }
@@ -195,8 +230,10 @@
         function updateSortUI() {
             ['regDate', 'actualPrice', 'askingPrice'].forEach(key => {
                 const el = document.getElementById(`sort-${key}`);
-                if (sortConfig.key === key) el.innerHTML = `<i class="fas fa-sort-${sortConfig.direction === 'asc' ? 'up' : 'down'} text-blue-500"></i>`;
-                else el.innerHTML = '<i class="fas fa-sort text-slate-300"></i>';
+                if (el) {
+                    if (sortConfig.key === key) el.innerHTML = `<i class="fas fa-sort-${sortConfig.direction === 'asc' ? 'up' : 'down'} text-blue-500"></i>`;
+                    else el.innerHTML = '<i class="fas fa-sort text-slate-300"></i>';
+                }
             });
         }
 
