@@ -211,7 +211,7 @@
                 let gapHtml = '';
                 if (item.actualPrice && item.askingPrice) {
                     const diff = (item.askingPrice - item.actualPrice).toFixed(2);
-                    const isPlus = diff > 0;
+                    const isPlus = diff < 0;
                     gapHtml = `<div class="text-[10px] font-bold ${isPlus ? 'text-red-500' : 'text-blue-500'}"><i class="fas fa-caret-${isPlus ? 'up' : 'down'}"></i> ${Math.abs(diff)}</div>`;
                 }
                 return `
