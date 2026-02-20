@@ -276,12 +276,37 @@
                 if (isEditMode) {
                     return `
                     <tr class="bg-blue-50/50">
-                        <td class="px-4 py-2"><input class="edit-input font-bold" type="text" value="${item.regDate}" onchange="updateDataValue(${idx}, 'regDate', this.value)"></td>
-                        <td class="px-4 py-2 text-center"><input class="edit-input text-center" type="text" value="${item.status}" onchange="updateDataValue(${idx}, 'status', this.value)"></td>
-                        <td class="px-4 py-2"><input class="edit-input text-right text-blue-600 font-bold" type="number" step="0.01" value="${item.actualPrice}" onchange="updateDataValue(${idx}, 'actualPrice', this.value)"></td>
-                        <td class="px-4 py-2"><input class="edit-input text-right text-orange-600 font-bold" type="number" step="0.01" value="${item.askingPrice}" onchange="updateDataValue(${idx}, 'askingPrice', this.value)"></td>
-                        <td class="px-4 py-2 flex gap-1"><input class="edit-input w-1/2" type="text" value="${item.building}" onchange="updateDataValue(${idx}, 'building', this.value)"> <input class="edit-input w-1/2" type="text" value="${item.floor}" onchange="updateDataValue(${idx}, 'floor', this.value)"></td>
-                        <td class="px-4 py-2"><input class="edit-input" type="text" value="${item.note || ''}" onchange="updateDataValue(${idx}, 'note', this.value)"></td>
+                        <td class="px-4 py-2">
+                            <div class="flex flex-col gap-1">
+                                <span class="text-[9px] text-slate-400 font-bold uppercase">등록일</span>
+                                <input class="edit-input font-bold" type="text" value="${item.regDate || ''}" 
+                                    onchange="updateDataValue(${idx}, 'regDate', this.value)" placeholder="YYYY-MM-DD">
+                                <span class="text-[9px] text-slate-400 font-bold uppercase mt-1">계약일</span>
+                                <input class="edit-input text-[11px]" type="text" value="${item.contractDate || ''}" 
+                                    onchange="updateDataValue(${idx}, 'contractDate', this.value)" placeholder="YYYY-MM-DD">
+                            </div>
+                        </td>
+                        <td class="px-4 py-2 text-center">
+                            <input class="edit-input text-center" type="text" value="${item.status}" 
+                                onchange="updateDataValue(${idx}, 'status', this.value)">
+                        </td>
+                        <td class="px-4 py-2">
+                            <input class="edit-input text-right text-blue-600 font-bold" type="number" step="0.01" value="${item.actualPrice || ''}" 
+                                onchange="updateDataValue(${idx}, 'actualPrice', this.value)">
+                        </td>
+                        <td class="px-4 py-2">
+                            <input class="edit-input text-right text-orange-600 font-bold" type="number" step="0.01" value="${item.askingPrice || ''}" 
+                                onchange="updateDataValue(${idx}, 'askingPrice', this.value)">
+                        </td>
+                        <td class="px-4 py-2">
+                            <div class="flex flex-col gap-1">
+                                <input class="edit-input" type="text" value="${item.building}" onchange="updateDataValue(${idx}, 'building', this.value)" placeholder="동">
+                                <input class="edit-input" type="text" value="${item.floor}" onchange="updateDataValue(${idx}, 'floor', this.value)" placeholder="층">
+                            </div>
+                        </td>
+                        <td class="px-4 py-2">
+                            <textarea class="edit-input h-12" onchange="updateDataValue(${idx}, 'note', this.value)">${item.note || ''}</textarea>
+                        </td>
                     </tr>`;
                 }
 
