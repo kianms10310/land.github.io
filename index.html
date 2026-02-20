@@ -3,88 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>벽산블루밍 매물 현황</title>
+    <title>벽산블루밍 매물 관리 - JSON 연동</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap');
+        body { font-family: 'Pretendard', sans-serif; }
+    </style>
 </head>
-<body class="bg-gray-50 p-4 md:p-8">
+<body class="bg-slate-50 p-4 md:p-10">
 
     <div class="max-w-6xl mx-auto">
-        <header class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-800">벽산블루밍 매물 관리</h1>
-            <p class="text-gray-500 mt-2">최근 업데이트: 2026-02-20</p>
-        </header>
+        <div class="flex justify-between items-end mb-8">
+            <div>
+                <h1 class="text-3xl font-extrabold text-slate-800 tracking-tight">벽산블루밍 실거래 현황</h1>
+                <p class="text-slate-500 mt-2">외부 JSON 데이터 연동 시스템</p>
+            </div>
+            <div id="update-time" class="text-sm text-slate-400"></div>
+        </div>
 
-        <div class="overflow-x-auto bg-white rounded-xl shadow-lg">
+        <div class="bg-white rounded-2xl shadow-xl shadow-slate-200/50 overflow-hidden border border-slate-100">
             <table class="w-full text-left border-collapse">
                 <thead>
-                    <tr class="bg-gray-100 text-gray-600 uppercase text-sm">
-                        <th class="px-6 py-4">등록일 / 계약일</th>
-                        <th class="px-6 py-4">상태</th>
-                        <th class="px-6 py-4 text-center">실거래가</th>
-                        <th class="px-6 py-4 text-center">호가</th>
-                        <th class="px-6 py-4">동/층 (전용)</th>
-                        <th class="px-6 py-4">특이사항</th>
+                    <tr class="bg-slate-800 text-white text-sm">
+                        <th class="px-6 py-4 font-medium">등록일 / 계약일</th>
+                        <th class="px-6 py-4 font-medium text-center">상태</th>
+                        <th class="px-6 py-4 font-medium text-right">실거래가</th>
+                        <th class="px-6 py-4 font-medium text-right">호가 (차이)</th>
+                        <th class="px-6 py-4 font-medium text-center">동/층 (전용)</th>
+                        <th class="px-6 py-4 font-medium">특이사항</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-gray-200">
-                    <tr class="hover:bg-gray-50 transition">
-                        <td class="px-6 py-4">
-                            <div class="text-sm font-semibold text-gray-900">2026/01/09</div>
-                            <div class="text-xs text-gray-400">2026/01/30</div>
-                        </td>
-                        <td class="px-6 py-4">
-                            <span class="px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">완료</span>
-                        </td>
-                        <td class="px-6 py-4 text-center font-mono font-bold text-blue-600">7.85</td>
-                        <td class="px-6 py-4 text-center font-mono font-bold text-orange-600">
-                            7.85
-                            <span class="block text-[10px] text-gray-400 font-normal mt-1">변동없음</span>
-                        </td>
-                        <td class="px-6 py-4 text-sm text-gray-600">101동 / 13층 (59㎡)</td>
-                        <td class="px-6 py-4 text-xs text-gray-500 leading-relaxed">
-                            • 기존 매수인 토허제 취하 예정<br>• 2/20 계약, 4/15 잔금
-                        </td>
-                    </tr>
-
-                    <tr class="hover:bg-gray-50 transition">
-                        <td class="px-6 py-4">
-                            <div class="text-sm font-semibold text-gray-900">2026/02/19</div>
-                            <div class="text-xs text-gray-400">-</div>
-                        </td>
-                        <td class="px-6 py-4">
-                            <span class="px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600">시작 전</span>
-                        </td>
-                        <td class="px-6 py-4 text-center text-gray-300">-</td>
-                        <td class="px-6 py-4 text-center font-mono font-bold text-orange-600 text-lg">8.90</td>
-                        <td class="px-6 py-4 text-sm text-gray-600">102동 / 중층 (59㎡)</td>
-                        <td class="px-6 py-4 text-xs text-gray-500 leading-relaxed">
-                            • 26/11/05 입주<br>• 샷시포함 올수리
-                        </td>
-                    </tr>
-
-                    <tr class="hover:bg-gray-50 transition">
-                        <td class="px-6 py-4">
-                            <div class="text-sm font-semibold text-gray-900">2026/01/07</div>
-                            <div class="text-xs text-gray-400">2026/01/30</div>
-                        </td>
-                        <td class="px-6 py-4">
-                            <span class="px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">완료</span>
-                        </td>
-                        <td class="px-6 py-4 text-center font-mono font-bold text-blue-600">8.10</td>
-                        <td class="px-6 py-4 text-center font-mono font-bold text-orange-600">
-                            8.40
-                            <div class="flex items-center justify-center text-red-500 text-xs mt-1">
-                                <i class="fas fa-caret-up mr-1"></i> 0.30
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 text-sm text-gray-600">101동 / 16층 (59㎡)</td>
-                        <td class="px-6 py-4 text-xs text-gray-500">26/01/08 가격 조정</td>
-                    </tr>
-                </tbody>
+                <tbody id="table-body" class="divide-y divide-slate-100">
+                    </tbody>
             </table>
         </div>
     </div>
 
+    <script>
+        // 상태별 스타일 지정
+        const statusStyles = {
+            '완료': 'bg-emerald-100 text-emerald-700',
+            '진행 중': 'bg-blue-100 text-blue-700 border border-blue-200',
+            '시작 전': 'bg-slate-100 text-slate-600'
+        };
+
+        async function loadData() {
+            try {
+                const response = await fetch('data.json');
+                const data = await response.json();
+                renderTable(data);
+                document.getElementById('update-time').innerText = `총 ${data.length}개의 데이터`;
+            } catch (error) {
+                console.error('데이터 로드 실패:', error);
+                document.getElementById('table-body').innerHTML = `<tr><td colspan="6" class="p-10 text-center text-red-500">데이터를 불러오는데 실패했습니다. (data.json 파일을 확인하세요)</td></tr>`;
+            }
+        }
+
+        function renderTable(data) {
+            const tbody = document.getElementById('table-body');
+            tbody.innerHTML = '';
+
+            data.forEach(item => {
+                // 가격 차이 계산 (실거래가와 호가가 둘 다 있을 때만)
+                let gapHtml = '';
+                if (item.actualPrice && item.askingPrice) {
+                    const diff = (item.askingPrice - item.actualPrice).toFixed(2);
+                    if (diff > 0) {
+                        gapHtml = `<span class="ml-2 text-xs font-bold text-red-500"><i class="fas fa-arrow-up"></i> ${diff}</span>`;
+                    } else if (diff < 0) {
+                        gapHtml = `<span class="ml-2 text-xs font-bold text-blue-500"><i class="fas fa-arrow-down"></i> ${Math.abs(diff)}</span>`;
+                    } else {
+                        gapHtml = `<span class="ml-2 text-xs text-slate-300">-</span>`;
+                    }
+                }
+
+                const row = `
+                    <tr class="hover:bg-slate-50/80 transition-colors">
+                        <td class="px-6 py-5">
+                            <div class="font-bold text-slate-700">${item.regDate}</div>
+                            <div class="text-xs text-slate-400 mt-1">${item.contractDate || '-'}</div>
+                        </td>
+                        <td class="px-6 py-5 text-center">
+                            <span class="px-3 py-1 rounded-full text-[11px] font-bold ${statusStyles[item.status] || 'bg-gray-100'}">
+                                ${item.status}
+                            </span>
+                        </td>
+                        <td class="px-6 py-5 text-right font-mono font-bold text-slate-600">
+                            ${item.actualPrice ? item.actualPrice.toFixed(2) : '-'}
+                        </td>
+                        <td class="px-6 py-5 text-right font-mono font-bold">
+                            <span class="${item.askingPrice ? 'text-orange-600' : 'text-slate-300'}">
+                                ${item.askingPrice ? item.askingPrice.toFixed(2) : '-'}
+                            </span>
+                            ${gapHtml}
+                        </td>
+                        <td class="px-6 py-5 text-center text-sm text-slate-600">
+                            <span class="font-semibold">${item.building}동</span> / ${item.floor}층
+                            <div class="text-[10px] text-slate-400 font-normal">${item.size}㎡</div>
+                        </td>
+                        <td class="px-6 py-5 text-xs text-slate-500 leading-relaxed italic">
+                            ${item.note.replace(/\n/g, '<br>')}
+                        </td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+        }
+
+        loadData();
+    </script>
 </body>
 </html>
