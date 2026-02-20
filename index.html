@@ -1,3 +1,108 @@
-<!DCOTYPE html>
-<html>
+제공해주신 벽산블루밍 아파트 매물 데이터 테이블을 GitHub Pages에서 세련되게 보여줄 수 있도록 Tailwind CSS 기반의 현대적인 디자인 코드를 작성해 보았습니다.
+
+가장 핵심 요청 사항인 실거래가와 호가 분리, 그리고 차이값(Gap)에 따른 시각적 강조(빨간색/파란색 화살표) 기능을 포함했습니다.
+
+🎨 대시보드 스타일 테이블 디자인
+주요 특징
+가격 분리 및 비교: '실거래'와 '호가'를 별도 컬럼으로 나누고, 두 값이 모두 있을 때만 차이를 계산하여 뱃지 형태로 표시합니다.
+
+상태별 컬러링: '시작 전', '진행 중', '완료' 상태를 색상별로 구분하여 가독성을 높였습니다.
+
+반응형 레이아웃: GitHub Pages에서 깔끔하게 보이도록 여백과 폰트 크기를 조절했습니다.
+
+특이사항 태그화: 텍스트로 된 특이사항을 깔끔한 리스트 형태로 정리합니다.
+
+💻 HTML/Tailwind CSS 코드
+이 코드를 index.html로 저장하여 GitHub 저장소에 올리면 바로 확인하실 수 있습니다. (CDN 방식을 사용하여 별도 설치가 필요 없습니다.)
+
+HTML
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>벽산블루밍 매물 현황</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 p-4 md:p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <header class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-800">벽산블루밍 매물 관리</h1>
+            <p class="text-gray-500 mt-2">최근 업데이트: 2026-02-20</p>
+        </header>
+
+        <div class="overflow-x-auto bg-white rounded-xl shadow-lg">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-gray-100 text-gray-600 uppercase text-sm">
+                        <th class="px-6 py-4">등록일 / 계약일</th>
+                        <th class="px-6 py-4">상태</th>
+                        <th class="px-6 py-4 text-center">실거래가</th>
+                        <th class="px-6 py-4 text-center">호가</th>
+                        <th class="px-6 py-4">동/층 (전용)</th>
+                        <th class="px-6 py-4">특이사항</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4">
+                            <div class="text-sm font-semibold text-gray-900">2026/01/09</div>
+                            <div class="text-xs text-gray-400">2026/01/30</div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <span class="px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">완료</span>
+                        </td>
+                        <td class="px-6 py-4 text-center font-mono font-bold text-blue-600">7.85</td>
+                        <td class="px-6 py-4 text-center font-mono font-bold text-orange-600">
+                            7.85
+                            <span class="block text-[10px] text-gray-400 font-normal mt-1">변동없음</span>
+                        </td>
+                        <td class="px-6 py-4 text-sm text-gray-600">101동 / 13층 (59㎡)</td>
+                        <td class="px-6 py-4 text-xs text-gray-500 leading-relaxed">
+                            • 기존 매수인 토허제 취하 예정<br>• 2/20 계약, 4/15 잔금
+                        </td>
+                    </tr>
+
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4">
+                            <div class="text-sm font-semibold text-gray-900">2026/02/19</div>
+                            <div class="text-xs text-gray-400">-</div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <span class="px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600">시작 전</span>
+                        </td>
+                        <td class="px-6 py-4 text-center text-gray-300">-</td>
+                        <td class="px-6 py-4 text-center font-mono font-bold text-orange-600 text-lg">8.90</td>
+                        <td class="px-6 py-4 text-sm text-gray-600">102동 / 중층 (59㎡)</td>
+                        <td class="px-6 py-4 text-xs text-gray-500 leading-relaxed">
+                            • 26/11/05 입주<br>• 샷시포함 올수리
+                        </td>
+                    </tr>
+
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4">
+                            <div class="text-sm font-semibold text-gray-900">2026/01/07</div>
+                            <div class="text-xs text-gray-400">2026/01/30</div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <span class="px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">완료</span>
+                        </td>
+                        <td class="px-6 py-4 text-center font-mono font-bold text-blue-600">8.10</td>
+                        <td class="px-6 py-4 text-center font-mono font-bold text-orange-600">
+                            8.40
+                            <div class="flex items-center justify-center text-red-500 text-xs mt-1">
+                                <i class="fas fa-caret-up mr-1"></i> 0.30
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-sm text-gray-600">101동 / 16층 (59㎡)</td>
+                        <td class="px-6 py-4 text-xs text-gray-500">26/01/08 가격 조정</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
 </html>
