@@ -1,0 +1,8 @@
+[
+  { "regDate": "2026/02/20", "contractDate": "", "status": "시작 전", "actualPrice": null, "askingPrice": 11.5, "building": "302", "floor": "12", "size": null, "note": "" },
+  { "regDate": "2026/02/10", "contractDate": "", "status": "진행 중", "actualPrice": 10.15, "askingPrice": 10.4, "building": "301", "floor": "18", "size": null, "note": "- 화이트톤\n- 올수리" },
+  { "regDate": "2026/01/30", "contractDate": "", "status": "진행 중", "actualPrice": null, "askingPrice": 12.0, "building": "302", "floor": "19", "size": null, "note": "- 올수리" },
+  { "regDate": "2025/12/26", "contractDate": "2026/01/16", "status": "완료", "actualPrice": 8.5, "askingPrice": null, "building": "301", "floor": "20", "size": null, "note": "" },
+  { "regDate": "2025/12/05", "contractDate": "2025/12/28", "status": "완료", "actualPrice": 8.5, "askingPrice": null, "building": "302", "floor": "20", "size": null, "note": "" },
+  { "regDate": "2025/11/07", "contractDate": "2025/11/29", "status": "완료", "actualPrice": 8.85, "askingPrice": null, "building": "302", "floor": "3", "size": null, "note": "" }
+]
