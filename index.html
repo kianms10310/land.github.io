@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>부동산 실거래 및 호가 대시보드</title>
+    <title>부동산 가격 분석 플랫폼</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
@@ -12,8 +12,10 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap');
         body { font-family: 'Pretendard', sans-serif; letter-spacing: -0.025em; }
-        .tab-active { border-bottom: 3px solid #3b82f6; color: #3b82f6; font-weight: bold; }
-        .sort-icon { font-size: 0.8rem; margin-left: 4px; }
+        .tab-active { border-bottom: 3px solid #3b82f6; color: #3b82f6; font-weight: bold; background: #eff6ff; }
+        /* 탭이 많을 때 가로 스크롤을 위한 스타일 */
+        .tabs-container::-webkit-scrollbar { display: none; }
+        .tabs-container { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="bg-slate-50 p-4 md:p-10">
@@ -24,12 +26,12 @@
                 <h1 class="text-3xl font-extrabold text-slate-800 tracking-tight">부동산 가격 분석 플랫폼</h1>
                 <p class="text-slate-500 mt-1 italic">실거래가(계약일) vs 호가(등록일) 추이 비교</p>
             </div>
-            <div id="data-count" class="text-sm font-medium text-slate-400 bg-white px-4 py-2 rounded-full shadow-sm border border-slate-100"></div>
+            <div id="data-count" class="hidden md:block text-sm font-medium text-slate-400 bg-white px-4 py-2 rounded-full shadow-sm border border-slate-100"></div>
         </header>
 
-        <div class="flex border-b border-slate-200 mb-6 bg-white px-2 rounded-t-xl shadow-sm">
-            <button onclick="changeTab('byuksan', this)" class="tab-btn px-6 py-4 tab-active transition-all">벽산블루밍</button>
-            <button onclick="changeTab('ipark', this)" class="tab-btn px-6 py-4 text-slate-500 hover:text-blue-500 transition-all">성복역 아이파크</button>
+        <div class="relative mb-6">
+            <div id="tabs-wrapper" class="tabs-container flex overflow-x-auto border-b border-slate-200 bg-white rounded-t-xl shadow-sm whitespace-nowrap">
+                </div>
         </div>
 
         <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 mb-8">
@@ -47,62 +49,79 @@
                 <table class="w-full text-left border-collapse">
                     <thead>
                         <tr class="bg-slate-800 text-white text-xs md:text-sm uppercase tracking-wider cursor-pointer">
-                            <th class="px-6 py-4 font-semibold" onclick="handleSort('regDate')">
-                                등록일/계약일 <span id="sort-regDate" class="sort-icon"><i class="fas fa-sort"></i></span>
-                            </th>
+                            <th class="px-6 py-4 font-semibold" onclick="handleSort('regDate')">등록일/계약일 <span id="sort-regDate" class="ml-1 opacity-50"><i class="fas fa-sort"></i></span></th>
                             <th class="px-6 py-4 font-semibold text-center">상태</th>
-                            <th class="px-6 py-4 font-semibold text-right" onclick="handleSort('actualPrice')">
-                                실거래가 <span id="sort-actualPrice" class="sort-icon"><i class="fas fa-sort"></i></span>
-                            </th>
-                            <th class="px-6 py-4 font-semibold text-right" onclick="handleSort('askingPrice')">
-                                호가(차이) <span id="sort-askingPrice" class="sort-icon"><i class="fas fa-sort"></i></span>
-                            </th>
+                            <th class="px-6 py-4 font-semibold text-right" onclick="handleSort('actualPrice')">실거래가 <span id="sort-actualPrice" class="ml-1 opacity-50"><i class="fas fa-sort"></i></span></th>
+                            <th class="px-6 py-4 font-semibold text-right" onclick="handleSort('askingPrice')">호가(차이) <span id="sort-askingPrice" class="ml-1 opacity-50"><i class="fas fa-sort"></i></span></th>
                             <th class="px-6 py-4 font-semibold text-center">동/층</th>
                             <th class="px-6 py-4 font-semibold">특이사항</th>
                         </tr>
                     </thead>
-                    <tbody id="table-body" class="divide-y divide-slate-100 text-sm">
-                        </tbody>
+                    <tbody id="table-body" class="divide-y divide-slate-100 text-sm"></tbody>
                 </table>
             </div>
         </div>
     </div>
 
     <script>
+        // --- 탭 설정 변수 (이곳에 아파트를 추가하세요) ---
+        const tabsConfig = [
+            { id: 'byuksan', name: '벽산블루밍', file: '/data/byuksan.json' },
+            { id: 'ipark', name: '성복역 아이파크', file: '/data/ipark.json' },
+            { id: 'ipark3', name: '서원마을3단지아이파크', file: '/data/ipark3.json' },
+            { id: 'jinsan', name: '진산마을성원상떼빌', file: '/data/jinsan.json' }
+        ];
+
         let priceChart = null;
         let currentRawData = [];
         let filteredData = [];
         let currentSize = null;
         let sortConfig = { key: 'regDate', direction: 'desc' };
 
-        // 1. 초기 데이터 로드
-        window.onload = () => loadData('./data/byuksan.json');
+        // 페이지 로드 시 초기화
+        window.onload = () => {
+            initTabs();
+            loadData(tabsConfig[0].file, tabsConfig[0].id);
+        };
 
-        async function changeTab(aptKey, btnElement) {
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('tab-active');
-                btn.classList.add('text-slate-500');
-            });
-            btnElement.classList.add('tab-active');
-            btnElement.classList.remove('text-slate-500');
-            
-            await loadData(`./data/${aptKey}.json`);
+        // 탭 메뉴 동적 생성
+        function initTabs() {
+            const wrapper = document.getElementById('tabs-wrapper');
+            wrapper.innerHTML = tabsConfig.map(tab => `
+                <button id="btn-${tab.id}" 
+                        onclick="handleTabClick('${tab.file}', '${tab.id}')" 
+                        class="tab-btn px-6 py-4 text-slate-500 hover:text-blue-600 border-b-2 border-transparent transition-all shrink-0">
+                    ${tab.name}
+                </button>
+            `).join('');
         }
 
-        async function loadData(fileName) {
+        async function handleTabClick(file, id) {
+            // 모든 탭 스타일 초기화
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('tab-active'));
+            // 클릭한 탭 활성화
+            document.getElementById(`btn-${id}`).classList.add('tab-active');
+            
+            await loadData(file, id);
+        }
+
+        async function loadData(fileName, id) {
             try {
+                // 첫 로드 시 버튼 활성화 표시
+                const activeBtn = document.getElementById(`btn-${id}`);
+                if (activeBtn) activeBtn.classList.add('tab-active');
+
                 const response = await fetch(fileName);
+                if (!response.ok) throw new Error('파일 없음');
+                
                 currentRawData = await response.json();
                 
-                // 면적 목록 추출 및 필터 생성
                 const sizes = [...new Set(currentRawData.map(item => item.size))].sort((a, b) => a - b);
                 renderSizeFilters(sizes);
-                
-                // 기본값으로 첫 번째 면적 선택
                 updateView(sizes[0]);
             } catch (error) {
                 console.error('Data Load Error:', error);
-                alert('데이터 파일을 찾을 수 없습니다: ' + fileName);
+                document.getElementById('table-body').innerHTML = `<tr><td colspan="6" class="p-10 text-center text-slate-400 font-italic">데이터 파일(${fileName})이 아직 준비되지 않았습니다.</td></tr>`;
             }
         }
 
@@ -110,53 +129,40 @@
             const container = document.getElementById('size-filters');
             container.innerHTML = sizes.map(size => `
                 <button onclick="updateView(${size})" class="size-btn px-4 py-1.5 rounded-full border border-slate-200 text-xs font-bold transition-all hover:bg-slate-50">
-                    전용 ${size}㎡
+                    ${size ? '전용 ' + size + '㎡' : '전용 미지정'}
                 </button>
             `).join('');
         }
 
         function updateView(size) {
             currentSize = size;
-            // 버튼 활성화 스타일
             document.querySelectorAll('.size-btn').forEach(btn => {
-                const isActive = btn.innerText.includes(size);
+                const isActive = size ? btn.innerText.includes(size) : btn.innerText.includes('미지정');
                 btn.className = isActive 
-                    ? "size-btn px-4 py-1.5 rounded-full bg-blue-600 text-white text-xs font-bold shadow-md shadow-blue-200 transition-all"
-                    : "size-btn px-4 py-1.5 rounded-full border border-slate-200 text-slate-500 text-xs font-bold hover:bg-slate-50 transition-all";
+                    ? "size-btn px-4 py-1.5 rounded-full bg-blue-600 text-white text-xs font-bold shadow-md shadow-blue-200"
+                    : "size-btn px-4 py-1.5 rounded-full border border-slate-200 text-slate-500 text-xs font-bold hover:bg-slate-50";
             });
 
             filteredData = currentRawData.filter(item => item.size === size);
-            document.getElementById('data-count').innerText = `총 ${filteredData.length}건 (전용 ${size}㎡)`;
+            document.getElementById('data-count').innerText = `총 ${filteredData.length}건`;
             
             renderChart();
             renderTable();
         }
 
-        // 2. 정렬 기능
+        // --- 정렬 및 렌더링 로직 (기존과 동일하되 최적화됨) ---
         function handleSort(key) {
-            if (sortConfig.key === key) {
-                sortConfig.direction = sortConfig.direction === 'asc' ? 'desc' : 'asc';
-            } else {
-                sortConfig.key = key;
-                sortConfig.direction = 'desc';
-            }
+            if (sortConfig.key === key) sortConfig.direction = sortConfig.direction === 'asc' ? 'desc' : 'asc';
+            else { sortConfig.key = key; sortConfig.direction = 'desc'; }
             renderTable();
         }
 
         function renderTable() {
             const tbody = document.getElementById('table-body');
-            
             const sorted = [...filteredData].sort((a, b) => {
-                let vA = a[sortConfig.key];
-                let vB = b[sortConfig.key];
-                
-                if (sortConfig.key === 'regDate' || sortConfig.key === 'contractDate') {
-                    vA = vA ? new Date(vA) : new Date(0);
-                    vB = vB ? new Date(vB) : new Date(0);
-                } else {
-                    vA = vA || 0; vB = vB || 0;
-                }
-                
+                let vA = a[sortConfig.key], vB = b[sortConfig.key];
+                if (sortConfig.key.includes('Date')) { vA = vA ? new Date(vA) : new Date(0); vB = vB ? new Date(vB) : new Date(0); }
+                else { vA = vA || 0; vB = vB || 0; }
                 return sortConfig.direction === 'asc' ? (vA > vB ? 1 : -1) : (vA < vB ? 1 : -1);
             });
 
@@ -165,103 +171,48 @@
                 if (item.actualPrice && item.askingPrice) {
                     const diff = (item.askingPrice - item.actualPrice).toFixed(2);
                     const isPlus = diff > 0;
-                    gapHtml = `<div class="text-[10px] font-bold ${isPlus ? 'text-red-500' : 'text-blue-500'}">
-                        <i class="fas fa-caret-${isPlus ? 'up' : 'down'}"></i> ${Math.abs(diff)}
-                    </div>`;
+                    gapHtml = `<div class="text-[10px] font-bold ${isPlus ? 'text-red-500' : 'text-blue-500'}"><i class="fas fa-caret-${isPlus ? 'up' : 'down'}"></i> ${Math.abs(diff)}</div>`;
                 }
-
                 return `
                 <tr class="hover:bg-slate-50 transition-colors">
-                    <td class="px-6 py-4">
-                        <div class="font-bold text-slate-700">${item.regDate}</div>
-                        <div class="text-[10px] text-slate-400">${item.contractDate || '-'}</div>
-                    </td>
-                    <td class="px-6 py-4 text-center">
-                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600">${item.status}</span>
-                    </td>
+                    <td class="px-6 py-4"><div class="font-bold text-slate-700">${item.regDate}</div><div class="text-[10px] text-slate-400">${item.contractDate || '-'}</div></td>
+                    <td class="px-6 py-4 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600">${item.status}</span></td>
                     <td class="px-6 py-4 text-right font-mono font-bold text-blue-600">${item.actualPrice ? item.actualPrice.toFixed(2) : '-'}</td>
-                    <td class="px-6 py-4 text-right">
-                        <div class="font-mono font-bold text-orange-600">${item.askingPrice ? item.askingPrice.toFixed(2) : '-'}</div>
-                        ${gapHtml}
-                    </td>
-                    <td class="px-6 py-4 text-center text-xs text-slate-600 font-medium">${item.building}동 / ${item.floor}층</td>
-                    <td class="px-6 py-4 text-xs text-slate-500 leading-snug">${item.note.replace(/\n/g, '<br>')}</td>
+                    <td class="px-6 py-4 text-right"><div class="font-mono font-bold text-orange-600">${item.askingPrice ? item.askingPrice.toFixed(2) : '-'}</div>${gapHtml}</td>
+                    <td class="px-6 py-4 text-center text-xs text-slate-600">${item.building}동 / ${item.floor}층</td>
+                    <td class="px-6 py-4 text-xs text-slate-500 italic">${item.note ? item.note.replace(/\n/g, '<br>') : ''}</td>
                 </tr>`;
             }).join('');
-
             updateSortUI();
         }
 
         function updateSortUI() {
             ['regDate', 'actualPrice', 'askingPrice'].forEach(key => {
                 const el = document.getElementById(`sort-${key}`);
-                if (sortConfig.key === key) {
-                    el.innerHTML = sortConfig.direction === 'asc' ? '<i class="fas fa-sort-up text-blue-500"></i>' : '<i class="fas fa-sort-down text-blue-500"></i>';
-                } else {
-                    el.innerHTML = '<i class="fas fa-sort text-slate-300"></i>';
-                }
+                if (sortConfig.key === key) el.innerHTML = `<i class="fas fa-sort-${sortConfig.direction === 'asc' ? 'up' : 'down'} text-blue-500"></i>`;
+                else el.innerHTML = '<i class="fas fa-sort text-slate-300"></i>';
             });
         }
 
-        // 3. 그래프 기능
         function renderChart() {
             const ctx = document.getElementById('priceChart').getContext('2d');
-            
-            const actualPoints = filteredData
-                .filter(d => d.actualPrice && d.contractDate)
-                .map(d => ({ x: d.contractDate, y: d.actualPrice }))
-                .sort((a, b) => new Date(a.x) - new Date(b.x));
-
-            const askingPoints = filteredData
-                .filter(d => d.askingPrice && d.regDate)
-                .map(d => ({ x: d.regDate, y: d.askingPrice }))
-                .sort((a, b) => new Date(a.x) - new Date(b.x));
-
+            const actual = filteredData.filter(d => d.actualPrice && d.contractDate).map(d => ({ x: d.contractDate, y: d.actualPrice })).sort((a, b) => new Date(a.x) - new Date(b.x));
+            const asking = filteredData.filter(d => d.askingPrice && d.regDate).map(d => ({ x: d.regDate, y: d.askingPrice })).sort((a, b) => new Date(a.x) - new Date(b.x));
             if (priceChart) priceChart.destroy();
-
             priceChart = new Chart(ctx, {
                 type: 'line',
                 data: {
                     datasets: [
-                        {
-                            label: '실거래가 (계약일 기준)',
-                            data: actualPoints,
-                            borderColor: '#2563eb',
-                            backgroundColor: 'rgba(37, 99, 235, 0.05)',
-                            fill: true,
-                            tension: 0.1,
-                            pointRadius: 5,
-                            pointBackgroundColor: '#2563eb'
-                        },
-                        {
-                            label: '호가 (등록일 기준)',
-                            data: askingPoints,
-                            borderColor: '#ea580c',
-                            borderDash: [5, 5],
-                            tension: 0.1,
-                            pointRadius: 5,
-                            pointStyle: 'rectRot',
-                            pointBackgroundColor: '#ea580c'
-                        }
+                        { label: '실거래가', data: actual, borderColor: '#2563eb', backgroundColor: 'rgba(37, 99, 235, 0.05)', fill: true, tension: 0.1, pointRadius: 4 },
+                        { label: '호가', data: asking, borderColor: '#ea580c', borderDash: [5, 5], tension: 0.1, pointRadius: 4, pointStyle: 'rectRot' }
                     ]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    interaction: { mode: 'index', intersect: false },
                     scales: {
-                        x: { 
-                            type: 'time', 
-                            time: { unit: 'month', displayFormats: { month: 'YY년 MM월' } },
-                            grid: { display: false }
-                        },
-                        y: { 
-                            title: { display: true, text: '억원', font: { weight: 'bold' } },
-                            ticks: { callback: value => value.toFixed(1) }
-                        }
-                    },
-                    plugins: {
-                        legend: { position: 'top', labels: { usePointStyle: true, boxWidth: 6 } }
+                        x: { type: 'time', time: { unit: 'month', displayFormats: { month: 'YY년 MM월' } } },
+                        y: { ticks: { callback: v => v.toFixed(1) } }
                     }
                 }
             });
