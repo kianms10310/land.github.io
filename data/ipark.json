@@ -129,4 +129,39 @@
     "building": "1004",
     "floor": "저",
     "size": 84,
-    "note":
+    "note": "- 즉시입주"
+  },
+  {
+    "regDate": "2025/12/10",
+    "contractDate": "2025/12/31",
+    "status": "완료",
+    "actualPrice": 8.1,
+    "askingPrice": null,
+    "building": "1010",
+    "floor": "16",
+    "size": 59,
+    "note": ""
+  },
+  {
+    "regDate": "2025/12/05",
+    "contractDate": "2025/12/26",
+    "status": "완료",
+    "actualPrice": 8.83,
+    "askingPrice": null,
+    "building": "1007",
+    "floor": "4",
+    "size": 84,
+    "note": ""
+  },
+  {
+    "regDate": "2025/11/14",
+    "contractDate": "2025/12/12",
+    "status": "완료",
+    "actualPrice": 9.0,
+    "askingPrice": null,
+    "building": "1008",
+    "floor": "2",
+    "size": 84,
+    "note": ""
+  }
+]
