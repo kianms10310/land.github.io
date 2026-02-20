@@ -76,7 +76,7 @@
         let sortConfig = { key: 'regDate', direction: 'desc' };
 
         // 1. 초기 데이터 로드
-        window.onload = () => loadData('byuksan.json');
+        window.onload = () => loadData('/data/byuksan.json');
 
         async function changeTab(aptKey, btnElement) {
             document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -86,7 +86,7 @@
             btnElement.classList.add('tab-active');
             btnElement.classList.remove('text-slate-500');
             
-            await loadData(`${aptKey}.json`);
+            await loadData(`/data/${aptKey}.json`);
         }
 
         async function loadData(fileName) {
