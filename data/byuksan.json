@@ -116,4 +116,52 @@
     "actualPrice": 7.3,
     "askingPrice": null,
     "building": "102",
-    "floor
+    "floor": "3",
+    "size": 59,
+    "note": ""
+  },
+  {
+    "regDate": "2025/11/28",
+    "contractDate": "2025/12/19",
+    "status": "완료",
+    "actualPrice": 7.4,
+    "askingPrice": null,
+    "building": "101",
+    "floor": "13",
+    "size": 59,
+    "note": ""
+  },
+  {
+    "regDate": "2025/11/27",
+    "contractDate": "2025/12/18",
+    "status": "완료",
+    "actualPrice": 7.5,
+    "askingPrice": null,
+    "building": "101",
+    "floor": "15",
+    "size": 59,
+    "note": ""
+  },
+  {
+    "regDate": "2025/11/26",
+    "contractDate": "2025/12/17",
+    "status": "완료",
+    "actualPrice": 7.44,
+    "askingPrice": null,
+    "building": "103",
+    "floor": "4",
+    "size": 59,
+    "note": ""
+  },
+  {
+    "regDate": "2025/11/26",
+    "contractDate": "2025/12/17",
+    "status": "완료",
+    "actualPrice": 8.0,
+    "askingPrice": null,
+    "building": "107",
+    "floor": "14",
+    "size": 84,
+    "note": ""
+  }
+]
