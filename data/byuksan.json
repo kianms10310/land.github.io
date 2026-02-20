@@ -1,1 +1,119 @@
-
+[
+  {
+    "regDate": "2026/02/19",
+    "contractDate": "",
+    "status": "시작 전",
+    "actualPrice": null,
+    "askingPrice": 8.9,
+    "building": "102",
+    "floor": "중",
+    "size": 59,
+    "note": "- 26/11/05 입주\n- 샷시포함올수리"
+  },
+  {
+    "regDate": "2026/02/13",
+    "contractDate": "",
+    "status": "시작 전",
+    "actualPrice": null,
+    "askingPrice": 7.8,
+    "building": "107",
+    "floor": "1",
+    "size": 59,
+    "note": "- 올수리\n- 26/12 이후 입주"
+  },
+  {
+    "regDate": "2026/02/12",
+    "contractDate": "",
+    "status": "시작 전",
+    "actualPrice": null,
+    "askingPrice": 8.5,
+    "building": "102",
+    "floor": "저",
+    "size": 59,
+    "note": "- 27/08 입주\n- 올수리\n- 보증금 3억"
+  },
+  {
+    "regDate": "2026/01/15",
+    "contractDate": "",
+    "status": "진행 중",
+    "actualPrice": null,
+    "askingPrice": 9.5,
+    "building": "106",
+    "floor": "15",
+    "size": 84,
+    "note": "- 26/01/15 9.0 → 9.2\n- 26/01/17 9.2 → 9.5\n- 26/04/29 이후 입주\n- 샷시제외 올수리"
+  },
+  {
+    "regDate": "2026/01/15",
+    "contractDate": "2026/02/05",
+    "status": "완료",
+    "actualPrice": 9.2,
+    "askingPrice": null,
+    "building": "106",
+    "floor": "12",
+    "size": 84,
+    "note": ""
+  },
+  {
+    "regDate": "2026/01/12",
+    "contractDate": "",
+    "status": "진행 중",
+    "actualPrice": null,
+    "askingPrice": 8.7,
+    "building": "103",
+    "floor": "중",
+    "size": 84,
+    "note": "- 샷시빼고 올수리"
+  },
+  {
+    "regDate": "2026/01/09",
+    "contractDate": "2026/01/30",
+    "status": "완료",
+    "actualPrice": 7.85,
+    "askingPrice": 7.85,
+    "building": "101",
+    "floor": "13",
+    "size": 59,
+    "note": "- 기존 매수인 토허제 취하 예정\n- 2/20 계약\n- 4/15 잔금"
+  },
+  {
+    "regDate": "2026/01/07",
+    "contractDate": "2026/01/30",
+    "status": "완료",
+    "actualPrice": 8.4,
+    "askingPrice": 8.4,
+    "building": "101",
+    "floor": "16",
+    "size": 59,
+    "note": "- 26/01/08 8.1 → 8.4"
+  },
+  {
+    "regDate": "2026/01/02",
+    "contractDate": "2026/01/24",
+    "status": "완료",
+    "actualPrice": 8.58,
+    "askingPrice": null,
+    "building": "106",
+    "floor": "19",
+    "size": 84,
+    "note": ""
+  },
+  {
+    "regDate": "2025/11/29",
+    "contractDate": "2025/12/20",
+    "status": "완료",
+    "actualPrice": 8.0,
+    "askingPrice": null,
+    "building": "103",
+    "floor": "3",
+    "size": 84,
+    "note": ""
+  },
+  {
+    "regDate": "2025/11/29",
+    "contractDate": "2025/12/20",
+    "status": "완료",
+    "actualPrice": 7.3,
+    "askingPrice": null,
+    "building": "102",
+    "floor
