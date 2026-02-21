@@ -166,8 +166,19 @@
     "building": "811",
     "floor": "5",
     "size": 59,
-    "note": "- 26/01/29 11.3 → 11.5\n- 26/02/11 11.5 → 11.2\n- 26/03/20 입주\n- 방거실 확장",
-    "isLocked": false
+    "note": "- 방거실 확장",
+    "isLocked": false,
+    "priceHistory": [
+      {
+        "date": "2026-01-29",
+        "price": 11.3
+      },
+      {
+        "date": "2026-02-11",
+        "price": 11.5
+      }
+    ],
+    "moveInDate": "2026-3"
   },
   {
     "regDate": "2026/02/10",
