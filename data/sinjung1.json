@@ -20,8 +20,15 @@
     "building": "105",
     "floor": "고",
     "size": 59,
-    "note": "• 26/02/19 12.3 → 12.5\n• 26/05/27 입주\n• 완전특올수리",
-    "isLocked": false
+    "note": "• 완전특올수리",
+    "isLocked": false,
+    "moveInDate": "2026-05",
+    "priceHistory": [
+      {
+        "date": "2026-02-19",
+        "price": 12.3
+      }
+    ]
   },
   {
     "regDate": "2026/02/14",
