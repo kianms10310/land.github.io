@@ -52,15 +52,15 @@
     "isInProgress": false
   },
   {
-    "regDate": "2026-02-14",
+    "regDate": "2026-02-20",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
-    "askingPrice": 11.5,
+    "askingPrice": 11.6,
     "building": "707",
     "floor": "11",
     "size": 59,
-    "note": "비확장\n샷시포함올수리",
+    "note": "- 26/02/20 11.5 > 11.6\n비확장\n샷시포함올수리",
     "isLocked": false,
     "isInProgress": false
   },
@@ -82,7 +82,7 @@
     "contractDate": "",
     "status": "진행 중",
     "actualPrice": null,
-    "askingPrice": 11.0,
+    "askingPrice": 11,
     "building": "705",
     "floor": "14",
     "size": 59,
