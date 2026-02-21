@@ -8,9 +8,16 @@
     "building": "706",
     "floor": "1",
     "size": 59,
-    "note": "26/02/20 10.3 → 10.5\n27/05 입주",
+    "note": "",
     "isLocked": false,
-    "isInProgress": false
+    "isInProgress": false,
+    "priceHistory": [
+      {
+        "date": "2026-02-20",
+        "price": 10.3
+      }
+    ],
+    "moveInDate": "2027-05"
   },
   {
     "regDate": "2026-02-20",
@@ -21,9 +28,19 @@
     "building": "705",
     "floor": "2",
     "size": 59,
-    "note": "26/01/31 10.5 → 10.8\n26/02/03 10.8 → 10.7\n26/02/12 10.7 → 10.5",
+    "note": "",
     "isLocked": false,
-    "isInProgress": false
+    "isInProgress": false,
+    "priceHistory": [
+      {
+        "date": "2026-01-31",
+        "price": 10.5
+      },
+      {
+        "date": "2026-02-03",
+        "price": 10.8
+      }
+    ]
   },
   {
     "regDate": "2026-02-20",
@@ -34,7 +51,7 @@
     "building": "706",
     "floor": "8",
     "size": 59,
-    "note": "3년전 화장실, 싱크대 수리\n거실폴딩도어",
+    "note": "- 3년전 화장실, 싱크대 수리\n거실폴딩도어",
     "isLocked": false,
     "isInProgress": false
   },
@@ -47,9 +64,10 @@
     "building": "705",
     "floor": "1",
     "size": 59,
-    "note": "26/06/10 입주",
+    "note": "",
     "isLocked": false,
-    "isInProgress": false
+    "isInProgress": false,
+    "moveInDate": "2026-10"
   },
   {
     "regDate": "2026-02-20",
@@ -60,9 +78,15 @@
     "building": "707",
     "floor": "11",
     "size": 59,
-    "note": "- 26/02/20 11.5 > 11.6\n비확장\n샷시포함올수리",
+    "note": "- 비확장\n- 샷시포함올수리",
     "isLocked": false,
-    "isInProgress": false
+    "isInProgress": false,
+    "priceHistory": [
+      {
+        "date": "2026-02-20",
+        "price": 11.5
+      }
+    ]
   },
   {
     "regDate": "2026-02-12",
@@ -73,9 +97,16 @@
     "building": "705",
     "floor": "13",
     "size": 59,
-    "note": "26/02/12 11 → 11.5\n27/04/09 입주",
+    "note": "",
     "isLocked": false,
-    "isInProgress": false
+    "isInProgress": false,
+    "priceHistory": [
+      {
+        "date": "2026-02-11",
+        "price": 11
+      }
+    ],
+    "moveInDate": "2027-04"
   },
   {
     "regDate": "2026-02-10",
