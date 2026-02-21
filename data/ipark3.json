@@ -19,7 +19,8 @@
     "building": "301",
     "floor": "18",
     "size": 84,
-    "note": "- 화이트톤\n- 올수리"
+    "note": "- 화이트톤\n- 올수리",
+    "isInProgress": true
   },
   {
     "regDate": "2026/01/30",
