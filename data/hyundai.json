@@ -1,6 +1,6 @@
 [
   {
-    "regDate": "2026-02-21",
+    "regDate": "2026/02/21",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -8,7 +8,8 @@
     "building": "203",
     "floor": "고",
     "size": 84,
-    "note": "• 샷시제외 올수리"
+    "note": "• 샷시제외 올수리",
+    "isLocked": true
   },
   {
     "regDate": "2026/02/20",
@@ -22,7 +23,7 @@
     "note": "- 26/10 협의\n- 일부수리"
   },
   {
-    "regDate": "2026/02/20",
+    "regDate": "2026/02/21",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -30,7 +31,8 @@
     "building": "206",
     "floor": "중",
     "size": 59,
-    "note": "- 27/10/27 입주"
+    "note": "- 27/10/27 입주",
+    "isLocked": true
   },
   {
     "regDate": "2026/02/20",
@@ -52,7 +54,8 @@
     "building": "206",
     "floor": "13",
     "size": 59,
-    "note": "- 부분수리"
+    "note": "- 부분수리",
+    "isLocked": true
   },
   {
     "regDate": "2026/02/21",
@@ -61,9 +64,10 @@
     "actualPrice": null,
     "askingPrice": 10,
     "building": "206",
-    "floor": "중",
+    "floor": "고",
     "size": 59,
-    "note": "• 올수리"
+    "note": "• 샷시제외 올수리",
+    "isLocked": true
   },
   {
     "regDate": "2026/02/20",
@@ -74,7 +78,8 @@
     "building": "201",
     "floor": "고",
     "size": 84,
-    "note": "• 26/07 입주\n• 샷시제외 올수리"
+    "note": "• 26/07 입주\n• 샷시제외 올수리",
+    "isLocked": true
   },
   {
     "regDate": "2026/02/19",
@@ -96,7 +101,8 @@
     "building": "206",
     "floor": "중",
     "size": 59,
-    "note": "• 올수리"
+    "note": "• 올수리",
+    "isLocked": true
   },
   {
     "regDate": "2026/02/19",
@@ -143,7 +149,7 @@
     "note": ""
   },
   {
-    "regDate": "2026/02/14",
+    "regDate": "2026/02/21",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -151,7 +157,8 @@
     "building": "201",
     "floor": "9",
     "size": 84,
-    "note": "- 26/05/20 입주\n- 씽크대화장실 화이트 수리\n- 방1확장"
+    "note": "- 26/05/20 입주\n- 씽크대화장실 화이트 수리\n- 방1확장",
+    "isLocked": true
   },
   {
     "regDate": "2026/02/21",
@@ -165,7 +172,7 @@
     "note": "- 일부수리"
   },
   {
-    "regDate": "2026/02/12",
+    "regDate": "2026/02/21",
     "contractDate": "",
     "status": "진행 중",
     "actualPrice": null,
@@ -173,7 +180,8 @@
     "building": "203",
     "floor": "5",
     "size": 84,
-    "note": "- 샷시제외 올수리\n- 화이트 올수리"
+    "note": "- 샷시제외 올수리\n- 화이트 올수리",
+    "isLocked": true
   },
   {
     "regDate": "2026/02/11",
