@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>부동산 가격 비교 - 관리자 모드</title>
+    <title>부동산 가격 비교 - 통합 관리 시스템</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
@@ -19,7 +19,7 @@
         .edit-input:focus { background-color: #fff; border-color: #3b82f6; box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1); }
         .edit-input:disabled { background-color: #f1f5f9; color: #94a3b8; cursor: not-allowed; border-color: #e2e8f0; }
         /* 모달 스타일 */
-        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); align-items: center; justify-content: center; }
+        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); align-items: center; justify-content: center; backdrop-filter: blur(2px); }
         .modal.active { display: flex; }
     </style>
 </head>
@@ -29,68 +29,83 @@
         <header class="mb-8 flex justify-between items-center">
             <div>
                 <h1 class="text-3xl font-extrabold text-slate-800 tracking-tight">부동산 가격 비교</h1>
-                <p class="text-slate-500 mt-1 italic">실거래가(계약일) vs 호가(등록일) 추이 비교</p>
+                <p class="text-slate-500 mt-1 italic font-medium text-sm">실거래가(계약일) vs 호가(등록일) 추이 및 이력 관리</p>
             </div>
             <div class="flex items-center gap-2">
-                <button id="save-btn" onclick="saveToGithub()" class="hidden bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full text-sm font-bold shadow-md transition-all"><i class="fas fa-save mr-1"></i> 저장</button>
-                <button onclick="toggleEditMode()" class="bg-slate-800 hover:bg-black text-white px-4 py-2 rounded-full text-sm font-bold shadow-md transition-all"><i class="fas fa-lock mr-1"></i> <span id="edit-btn-text">관리자</span></button>
-                <div id="data-count" class="hidden md:block text-sm font-medium text-slate-400 bg-white px-4 py-2 rounded-full shadow-sm border border-slate-100"></div>
+                <button id="save-btn" onclick="saveToGithub()" class="hidden bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg transition-all transform hover:scale-105 active:scale-95">
+                    <i class="fas fa-save mr-1"></i> 데이터 저장
+                </button>
+                <button onclick="toggleEditMode()" class="bg-slate-800 hover:bg-black text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg transition-all transform hover:scale-105">
+                    <i class="fas fa-lock mr-1"></i> <span id="edit-btn-text">관리자 접속</span>
+                </button>
             </div>
         </header>
 
-        <div id="tabs-wrapper" class="tabs-container flex overflow-x-auto whitespace-nowrap mb-6 bg-white rounded-xl shadow-sm border border-slate-200"></div>
+        <div class="relative mb-6 bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <div id="tabs-wrapper" class="tabs-container flex overflow-x-auto whitespace-nowrap"></div>
+        </div>
 
         <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 mb-8">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-lg font-bold text-slate-700"><i class="fas fa-chart-line mr-2 text-blue-500"></i>가격 변동 추이</h2>
-                <div id="size-filters" class="flex gap-2"></div>
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+                <h2 class="text-lg font-bold text-slate-700"><i class="fas fa-chart-line mr-2 text-blue-500"></i>가격 변동 시각화</h2>
+                <div id="size-filters" class="flex flex-wrap gap-2"></div>
             </div>
-            <div class="h-[300px]"><canvas id="priceChart"></canvas></div>
+            <div class="h-[350px]"><canvas id="priceChart"></canvas></div>
         </div>
 
         <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100">
-            <div id="admin-controls" class="hidden p-4 bg-slate-50 border-b flex justify-end">
-                <button onclick="addNewData()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-xs font-bold shadow-sm"><i class="fas fa-plus mr-1"></i> 새 데이터 추가</button>
+            <div id="admin-controls" class="hidden p-4 bg-slate-50 border-b flex justify-between items-center">
+                <span class="text-xs font-bold text-slate-400"><i class="fas fa-info-circle mr-1"></i> 호가 수정 시 이력이 자동 생성됩니다.</span>
+                <button onclick="addNewData()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-xs font-bold shadow-md">
+                    <i class="fas fa-plus mr-1"></i> 새 데이터 추가
+                </button>
             </div>
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse">
                     <thead>
-                        <tr class="bg-slate-800 text-white text-xs uppercase tracking-wider">
-                            <th class="px-4 py-4 font-semibold">등록/계약</th>
+                        <tr class="bg-slate-800 text-white text-[11px] md:text-xs uppercase tracking-wider">
+                            <th class="px-4 py-4 font-semibold cursor-pointer" onclick="handleSort('regDate')">등록/계약 <span id="sort-regDate"></span></th>
                             <th class="px-4 py-4 font-semibold text-center">입주일</th>
                             <th class="px-4 py-4 font-semibold text-center">상태</th>
-                            <th class="px-4 py-4 font-semibold text-right">실거래가</th>
-                            <th class="px-4 py-4 font-semibold text-right">호가(이력)</th>
+                            <th class="px-4 py-4 font-semibold text-right cursor-pointer" onclick="handleSort('actualPrice')">실거래가 <span id="sort-actualPrice"></span></th>
+                            <th class="px-4 py-4 font-semibold text-right cursor-pointer" onclick="handleSort('askingPrice')">호가(이력) <span id="sort-askingPrice"></span></th>
                             <th class="px-4 py-4 font-semibold text-center">동/층</th>
                             <th class="px-4 py-4 font-semibold">특이사항</th>
                             <th id="th-action" class="hidden px-4 py-4 font-semibold text-center">관리</th>
                         </tr>
                     </thead>
-                    <tbody id="table-body" class="divide-y divide-slate-100 text-sm"></tbody>
+                    <tbody id="table-body" class="divide-y divide-slate-100 text-[13px]"></tbody>
                 </table>
             </div>
         </div>
     </div>
 
     <div id="history-modal" class="modal">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden transform transition-all scale-100">
             <div class="bg-slate-800 p-4 text-white flex justify-between items-center">
-                <h3 class="font-bold">호가 변경 이력 관리</h3>
-                <button onclick="closeHistoryModal()" class="text-slate-400 hover:text-white"><i class="fas fa-times"></i></button>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-history text-blue-400"></i>
+                    <h3 class="font-bold">호가 변경 이력</h3>
+                </div>
+                <button onclick="closeHistoryModal()" class="text-slate-400 hover:text-white transition-colors"><i class="fas fa-times"></i></button>
             </div>
             <div class="p-6">
-                <div id="history-list" class="space-y-3 max-h-60 overflow-y-auto mb-4"></div>
-                <div class="grid grid-cols-2 gap-2 p-3 bg-slate-50 rounded-lg">
-                    <input id="new-hist-date" type="date" class="edit-input">
-                    <input id="new-hist-price" type="number" step="0.01" class="edit-input" placeholder="호가">
-                    <button onclick="addHistoryItem()" class="col-span-2 bg-blue-600 text-white py-2 rounded-lg text-xs font-bold mt-2 hover:bg-blue-700">+ 이력 직접 추가</button>
+                <div id="history-list" class="space-y-2 max-h-64 overflow-y-auto mb-6 pr-1"></div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <p class="text-[11px] font-bold text-slate-500 mb-2 uppercase">이력 수동 추가</p>
+                    <div class="flex flex-col gap-2">
+                        <input id="new-hist-date" type="date" class="edit-input">
+                        <input id="new-hist-price" type="number" step="0.01" class="edit-input" placeholder="가격 입력 (단위: 억)">
+                        <button onclick="addHistoryItem()" class="bg-blue-600 text-white py-2 rounded-lg text-xs font-bold hover:bg-blue-700 transition-colors shadow-sm">
+                            추가하기
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // 전역 변수 및 설정 (기존과 동일)
         const tabsConfig = [
             { id: 'sinjung1', name: '신정마을1단지', file: './data/sinjung1.json' },
             { id: 'sinjung7', name: '신정마을7단지', file: './data/sinjung7.json' },
@@ -103,12 +118,19 @@
             { id: 'unam', name: '우남퍼스트빌', file: './data/unam.json' },
             { id: 'jinsan', name: '진산마을성원상떼빌', file: './data/jinsan.json' }
         ];
+
         const ADMIN_HASH = "90eae63487cae2df5b793b07c622680d2df6c9a024891c8a9bd98d08d5bc3d92";
+        const GITHUB_REPO = "kianms10310/land.github.io";
+
         let isEditMode = false, ghToken = "", priceChart = null, currentRawData = [], filteredData = [], currentSize = null, currentEditingIdx = null;
+        let sortConfig = { key: 'regDate', direction: 'desc' };
 
-        window.onload = () => { initTabs(); handleTabClick(tabsConfig[0].file, tabsConfig[0].id); };
+        window.onload = () => {
+            initTabs();
+            handleTabClick(tabsConfig[0].file, tabsConfig[0].id);
+        };
 
-        // --- 이력 관리 핵심 함수 ---
+        // --- 이력 모달 관련 ---
         function openHistoryModal(idx) {
             currentEditingIdx = idx;
             const item = filteredData[idx];
@@ -117,22 +139,26 @@
             document.getElementById('history-modal').classList.add('active');
         }
 
-        function closeHistoryModal() { document.getElementById('history-modal').classList.remove('active'); }
+        function closeHistoryModal() {
+            document.getElementById('history-modal').classList.remove('active');
+        }
 
         function renderHistoryList() {
             const list = document.getElementById('history-list');
             const history = filteredData[currentEditingIdx].priceHistory;
-            if (history.length === 0) {
-                list.innerHTML = `<p class="text-center text-slate-400 text-xs py-4">저장된 이력이 없습니다.</p>`;
+            if (!history || history.length === 0) {
+                list.innerHTML = `<div class="text-center py-8 text-slate-400 text-xs">기록된 이력이 없습니다.</div>`;
                 return;
             }
             list.innerHTML = history.map((h, i) => `
-                <div class="flex justify-between items-center bg-white border border-slate-200 p-2 rounded-lg">
-                    <span class="text-xs font-mono font-bold text-slate-600">${h.date}</span>
-                    <div class="flex items-center gap-3">
-                        <span class="text-xs font-bold text-blue-600">${h.price.toFixed(2)}</span>
-                        <button onclick="deleteHistoryItem(${i})" class="text-red-300 hover:text-red-500 text-xs"><i class="fas fa-trash"></i></button>
+                <div class="flex justify-between items-center bg-slate-50 border border-slate-100 p-3 rounded-lg hover:border-blue-200 transition-colors">
+                    <div class="flex flex-col">
+                        <span class="text-[10px] text-slate-400 font-bold">${h.date}</span>
+                        <span class="text-xs font-bold text-slate-700">${h.price.toFixed(2)} 억</span>
                     </div>
+                    <button onclick="deleteHistoryItem(${i})" class="w-8 h-8 flex items-center justify-center text-red-300 hover:text-red-500 hover:bg-red-50 rounded-full transition-all">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
                 </div>
             `).join('');
         }
@@ -140,7 +166,7 @@
         function addHistoryItem() {
             const date = document.getElementById('new-hist-date').value;
             const price = parseFloat(document.getElementById('new-hist-price').value);
-            if (!date || isNaN(price)) return alert("날짜와 가격을 입력하세요.");
+            if (!date || isNaN(price)) return alert("날짜와 가격을 정확히 입력하세요.");
             
             filteredData[currentEditingIdx].priceHistory.push({ date, price });
             filteredData[currentEditingIdx].priceHistory.sort((a,b) => new Date(a.date) - new Date(b.date));
@@ -149,22 +175,23 @@
         }
 
         function deleteHistoryItem(i) {
-            if (confirm("이 이력을 삭제할까요?")) {
+            if (confirm("이 이력을 삭제하시겠습니까?")) {
                 filteredData[currentEditingIdx].priceHistory.splice(i, 1);
                 renderHistoryList();
                 renderTable();
             }
         }
 
-        // --- 기존 데이터 관리 함수 (호가 수정 시 자동 이력 추가 로직 포함) ---
+        // --- 코어 로직 ---
         function updateDataValue(index, key, value) {
             const item = filteredData[index];
+            const today = new Date().toISOString().split('T')[0];
+
             if (key === 'askingPrice') {
                 const newPrice = value === "" ? null : parseFloat(value);
-                const today = new Date().toISOString().split('T')[0];
                 if (item.askingPrice !== null && item.askingPrice !== newPrice) {
                     if (!item.priceHistory) item.priceHistory = [];
-                    // 중복 방지: 같은 날짜의 이력이 있으면 가격만 업데이트, 없으면 추가
+                    // 오늘 이미 기록된 이력이 있으면 가격만 업데이트, 없으면 추가
                     const existingIdx = item.priceHistory.findIndex(h => h.date === today);
                     if (existingIdx > -1) item.priceHistory[existingIdx].price = item.askingPrice;
                     else item.priceHistory.push({ date: today, price: item.askingPrice });
@@ -173,14 +200,24 @@
                 item.askingPrice = newPrice;
             } else if (['actualPrice', 'size'].includes(key)) {
                 item[key] = value === "" ? null : parseFloat(value);
-            } else { item[key] = value; }
-            renderTable(); renderChart();
+            } else {
+                item[key] = value;
+            }
+            renderTable();
+            renderChart();
         }
 
-        // --- 렌더링 및 기타 로직 (통합본 유지) ---
         function renderTable() {
             const tbody = document.getElementById('table-body');
-            tbody.innerHTML = filteredData.map((item, realIdx) => {
+            const sorted = [...filteredData].sort((a, b) => {
+                let vA = a[sortConfig.key], vB = b[sortConfig.key];
+                if (sortConfig.key.includes('Date')) { vA = vA ? new Date(vA) : new Date(0); vB = vB ? new Date(vB) : new Date(0); }
+                else { vA = vA || 0; vB = vB || 0; }
+                return sortConfig.direction === 'asc' ? (vA > vB ? 1 : -1) : (vA < vB ? 1 : -1);
+            });
+
+            tbody.innerHTML = sorted.map((item) => {
+                const realIdx = filteredData.indexOf(item);
                 const hasActual = item.actualPrice && item.actualPrice > 0;
                 const hasContract = item.contractDate && item.contractDate.trim() !== "";
                 const status = (hasActual && hasContract) ? "완료" : (item.isInProgress ? "진행 중" : "시작 전");
@@ -189,47 +226,50 @@
 
                 if (isEditMode) {
                     return `
-                    <tr class="${isReadonly ? 'bg-slate-100/60' : 'bg-white'}">
-                        <td class="px-2 py-2 flex flex-col gap-1">
+                    <tr class="${isReadonly ? 'bg-slate-100/60' : 'bg-white'} hover:bg-slate-50 transition-colors">
+                        <td class="px-2 py-3 flex flex-col gap-1">
                             <input class="edit-input font-bold" type="text" value="${item.regDate}" onchange="updateDataValue(${realIdx}, 'regDate', this.value)" ${disabledAttr}>
                             <input class="edit-input text-[10px]" type="text" value="${item.contractDate || ''}" onchange="updateDataValue(${realIdx}, 'contractDate', this.value)" ${disabledAttr} placeholder="계약일">
                         </td>
-                        <td class="px-2 py-2"><input class="edit-input text-center" type="text" value="${item.moveInDate || ''}" onchange="updateDataValue(${realIdx}, 'moveInDate', this.value)" ${disabledAttr} placeholder="입주일"></td>
-                        <td class="px-2 py-2 text-center text-[10px] font-bold">${status}</td>
-                        <td class="px-2 py-2"><input class="edit-input text-right text-red-600 font-bold" type="number" step="0.01" value="${item.actualPrice || ''}" onchange="updateDataValue(${realIdx}, 'actualPrice', this.value)" ${disabledAttr}></td>
-                        <td class="px-2 py-2">
-                            <div class="flex gap-1 items-center">
+                        <td class="px-2 py-3"><input class="edit-input text-center" type="text" value="${item.moveInDate || ''}" onchange="updateDataValue(${realIdx}, 'moveInDate', this.value)" ${disabledAttr} placeholder="YYYY-MM"></td>
+                        <td class="px-2 py-3 text-center"><span class="text-[11px] font-bold ${status==='완료'?'text-green-600':'text-slate-400'}">${status}</span></td>
+                        <td class="px-2 py-3"><input class="edit-input text-right text-red-600 font-bold" type="number" step="0.01" value="${item.actualPrice || ''}" onchange="updateDataValue(${realIdx}, 'actualPrice', this.value)" ${disabledAttr}></td>
+                        <td class="px-2 py-3">
+                            <div class="flex items-center gap-1">
                                 <input class="edit-input text-right text-blue-600 font-bold" type="number" step="0.01" value="${item.askingPrice || ''}" onchange="updateDataValue(${realIdx}, 'askingPrice', this.value)" ${disabledAttr}>
-                                <button onclick="openHistoryModal(${realIdx})" class="p-2 text-slate-400 hover:text-blue-500"><i class="fas fa-history"></i></button>
+                                <button onclick="openHistoryModal(${realIdx})" class="p-2 text-slate-300 hover:text-blue-500 transition-colors"><i class="fas fa-history"></i></button>
                             </div>
                         </td>
-                        <td class="px-2 py-2">
+                        <td class="px-2 py-3">
                             <input class="edit-input mb-1 text-center" type="text" value="${item.building}" onchange="updateDataValue(${realIdx}, 'building', this.value)" ${disabledAttr} placeholder="동">
                             <input class="edit-input text-center" type="text" value="${item.floor}" onchange="updateDataValue(${realIdx}, 'floor', this.value)" ${disabledAttr} placeholder="층">
                         </td>
-                        <td class="px-2 py-2"><textarea class="edit-input" onchange="updateDataValue(${realIdx}, 'note', this.value)" ${disabledAttr}>${item.note || ''}</textarea></td>
-                        <td class="px-2 py-2 text-center">
-                            <button onclick="deleteData(${realIdx})" class="text-red-300 hover:text-red-600"><i class="fas fa-trash"></i></button>
+                        <td class="px-2 py-3"><textarea class="edit-input h-10" onchange="updateDataValue(${realIdx}, 'note', this.value)" ${disabledAttr}>${item.note || ''}</textarea></td>
+                        <td class="px-2 py-3 text-center">
+                            <button onclick="deleteData(${realIdx})" class="text-red-200 hover:text-red-600 transition-colors"><i class="fas fa-trash"></i></button>
                         </td>
                     </tr>`;
                 }
-                // (일반 모드는 이전 코드와 동일하여 생략 가능하지만 구조 유지)
-                return `<tr class="hover:bg-slate-50">
-                    <td class="px-4 py-4 font-bold">${item.regDate}<br><span class="text-[10px] text-slate-400 font-normal">${item.contractDate || '-'}</span></td>
-                    <td class="px-4 py-4 text-center text-xs text-slate-500">${item.moveInDate || '-'}</td>
-                    <td class="px-4 py-4 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100">${status}</span></td>
-                    <td class="px-4 py-4 text-right font-mono font-bold text-red-600">${item.actualPrice || '-'}</td>
+
+                // 뷰 모드
+                return `
+                <tr class="hover:bg-slate-50 transition-colors">
+                    <td class="px-4 py-4"><div class="font-bold text-slate-700">${item.regDate}</div><div class="text-[10px] text-slate-400">${item.contractDate || '-'}</div></td>
+                    <td class="px-4 py-4 text-center text-slate-600 text-xs">${item.moveInDate || '-'}</td>
+                    <td class="px-4 py-4 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold ${status==='완료'?'bg-green-100 text-green-700':(status==='진행 중'?'bg-blue-100 text-blue-700':'bg-slate-100 text-slate-600')}">${status}</span></td>
+                    <td class="px-4 py-4 text-right font-mono font-bold text-red-600">${item.actualPrice ? item.actualPrice.toFixed(2) : '-'}</td>
                     <td class="px-4 py-4 text-right">
-                        <div class="font-mono font-bold text-blue-600">${item.askingPrice || '-'}</div>
-                        <div class="text-[9px] text-slate-400 mt-1">${item.priceHistory?.slice(-1).map(h => `p: ${h.price} (${h.date.slice(5)})`).join('') || ''}</div>
+                        <div class="font-mono font-bold text-blue-600">${item.askingPrice ? item.askingPrice.toFixed(2) : '-'}</div>
+                        <div class="text-[9px] text-slate-400 mt-1">${item.priceHistory && item.priceHistory.length > 0 ? `p: ${item.priceHistory[item.priceHistory.length-1].price} (${item.priceHistory[item.priceHistory.length-1].date.slice(5)})` : ''}</div>
                     </td>
-                    <td class="px-4 py-4 text-center text-xs">${item.building}동 / ${item.floor}층</td>
-                    <td class="px-4 py-4 text-xs italic text-slate-500">${item.note || ''}</td>
+                    <td class="px-4 py-4 text-center text-xs text-slate-500">${item.building}동 / ${item.floor}층</td>
+                    <td class="px-4 py-4 text-xs text-slate-500 italic">${item.note ? item.note.replace(/\n/g, '<br>') : ''}</td>
                 </tr>`;
             }).join('');
+            updateSortUI();
         }
 
-        // 나머지 공통 함수들(initTabs, handleTabClick, loadData, renderChart 등)은 이전 통합본과 동일하게 유지
+        // --- 기타 유틸리티 ---
         function initTabs() {
             const wrapper = document.getElementById('tabs-wrapper');
             wrapper.innerHTML = tabsConfig.map(tab => `
@@ -252,44 +292,49 @@
                 const response = await fetch(fileName + '?v=' + Date.now());
                 currentRawData = await response.json();
                 const sizes = [...new Set(currentRawData.map(item => item.size))].sort((a, b) => a - b);
-                renderSizeFilters(sizes);
-                updateView(currentSize || sizes[0]);
-            } catch (e) { console.error(e); }
+                renderSizeFilters(sizes, sizes[0]);
+                updateView(sizes[0]);
+            } catch (e) {
+                document.getElementById('table-body').innerHTML = `<tr><td colspan="8" class="p-10 text-center text-slate-400">데이터를 불러올 수 없습니다.</td></tr>`;
+            }
         }
 
-        function renderSizeFilters(sizes) {
+        function renderSizeFilters(sizes, activeSize) {
             const container = document.getElementById('size-filters');
             container.innerHTML = sizes.map(size => `
-                <button onclick="updateView(${size})" class="size-btn px-4 py-1.5 rounded-full border border-slate-200 text-xs font-bold transition-all hover:bg-slate-50">전용 ${size}㎡</button>
+                <button onclick="updateView(${size})" class="size-btn px-4 py-1.5 rounded-full border border-slate-200 text-xs font-bold transition-all ${size===activeSize?'bg-blue-600 text-white shadow-md':'text-slate-500 hover:bg-slate-50'}">
+                    전용 ${size}㎡
+                </button>
             `).join('');
         }
 
         function updateView(size) {
             currentSize = size;
+            document.querySelectorAll('.size-btn').forEach(btn => {
+                const isActive = btn.innerText.includes(size);
+                btn.className = isActive ? "size-btn px-4 py-1.5 rounded-full bg-blue-600 text-white text-xs font-bold shadow-md" : "size-btn px-4 py-1.5 rounded-full border border-slate-200 text-slate-500 text-xs font-bold hover:bg-slate-50";
+            });
             filteredData = currentRawData.filter(item => item.size === size);
-            document.getElementById('data-count').innerText = `총 ${filteredData.length}건`;
-            renderChart(); renderTable();
+            renderChart();
+            renderTable();
         }
 
-        async function sha256(message) {
-            const msgBuffer = new TextEncoder().encode(message);
-            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-            return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+        function handleSort(key) {
+            if (sortConfig.key === key) sortConfig.direction = sortConfig.direction === 'asc' ? 'desc' : 'asc';
+            else { sortConfig.key = key; sortConfig.direction = 'desc'; }
+            renderTable();
         }
 
-        async function toggleEditMode() {
-            if (isEditMode) { location.reload(); return; }
-            const pwd = prompt("비밀번호:");
-            if (await sha256(pwd) === ADMIN_HASH) {
-                ghToken = prompt("GitHub Token:");
-                isEditMode = true;
-                document.getElementById('save-btn').classList.remove('hidden');
-                document.getElementById('admin-controls').classList.remove('hidden');
-                document.getElementById('th-action').classList.remove('hidden');
-                renderTable();
-            }
+        function updateSortUI() {
+            ['regDate', 'actualPrice', 'askingPrice'].forEach(key => {
+                const el = document.getElementById(`sort-${key}`);
+                if (el) {
+                    if (sortConfig.key === key) el.innerHTML = `<i class="fas fa-sort-${sortConfig.direction === 'asc' ? 'up' : 'down'} text-blue-500 ml-1"></i>`;
+                    else el.innerHTML = '<i class="fas fa-sort text-slate-300 ml-1"></i>';
+                }
+            });
         }
-        
+
         function addNewData() {
             const today = new Date().toISOString().split('T')[0];
             currentRawData.unshift({
@@ -301,20 +346,84 @@
             updateView(currentSize);
         }
 
+        function deleteData(index) {
+            if (confirm("이 데이터를 영구 삭제하시겠습니까?")) {
+                const item = filteredData[index];
+                currentRawData.splice(currentRawData.indexOf(item), 1);
+                updateView(currentSize);
+            }
+        }
+
+        async function sha256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        async function toggleEditMode() {
+            if (isEditMode) { location.reload(); return; }
+            const pwd = prompt("관리자 비밀번호를 입력하세요:");
+            if (!pwd) return;
+            if (await sha256(pwd) === ADMIN_HASH) {
+                ghToken = prompt("GitHub Personal Access Token을 입력하세요:");
+                if (!ghToken) return;
+                isEditMode = true;
+                document.getElementById('save-btn').classList.remove('hidden');
+                document.getElementById('admin-controls').classList.remove('hidden');
+                document.getElementById('th-action').classList.remove('hidden');
+                document.getElementById('edit-btn-text').innerText = "로그아웃";
+                renderTable();
+            } else { alert("비밀번호가 틀렸습니다."); }
+        }
+
+        async function saveToGithub() {
+            if (!ghToken) return;
+            const activeTab = tabsConfig.find(t => t.id === document.querySelector('.tab-btn.tab-active').id.replace('btn-',''));
+            const filePath = activeTab.file.replace('./', '');
+            
+            try {
+                const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${filePath}`, {
+                    headers: { 'Authorization': `token ${ghToken.trim()}` }
+                });
+                const fileInfo = await res.json();
+                const updatedContent = btoa(unescape(encodeURIComponent(JSON.stringify(currentRawData, null, 2))));
+
+                const putRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${filePath}`, {
+                    method: 'PUT',
+                    headers: { 'Authorization': `token ${ghToken.trim()}`, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: `Update ${activeTab.name}`, content: updatedContent, sha: fileInfo.sha })
+                });
+                if (putRes.ok) alert("✅ GitHub에 성공적으로 저장되었습니다!");
+                else alert("❌ 저장 실패");
+            } catch (e) { alert("에러 발생: " + e.message); }
+        }
+
         function renderChart() {
             const ctx = document.getElementById('priceChart').getContext('2d');
-            const actual = filteredData.filter(d => d.actualPrice && (d.contractDate || d.regDate)).map(d => ({ x: d.contractDate || d.regDate, y: d.actualPrice })).sort((a, b) => new Date(a.x) - new Date(b.x));
-            const asking = filteredData.filter(d => d.askingPrice && d.regDate).map(d => ({ x: d.regDate, y: d.askingPrice })).sort((a, b) => new Date(a.x) - new Date(b.x));
+            const actual = filteredData.filter(d => d.actualPrice && (d.contractDate || d.regDate))
+                            .map(d => ({ x: d.contractDate || d.regDate, y: d.actualPrice }))
+                            .sort((a, b) => new Date(a.x) - new Date(b.x));
+            const asking = filteredData.filter(d => d.askingPrice && d.regDate)
+                            .map(d => ({ x: d.regDate, y: d.askingPrice }))
+                            .sort((a, b) => new Date(a.x) - new Date(b.x));
+            
             if (priceChart) priceChart.destroy();
             priceChart = new Chart(ctx, {
                 type: 'line',
                 data: {
                     datasets: [
-                        { label: '실거래가', data: actual, borderColor: '#2563eb', tension: 0.1, pointRadius: 4 },
-                        { label: '호가', data: asking, borderColor: '#ea580c', borderDash: [5, 5], tension: 0.1, pointRadius: 4 }
+                        { label: '실거래가 (계약일 기준)', data: actual, borderColor: '#ef4444', backgroundColor: 'rgba(239, 68, 68, 0.1)', fill: true, tension: 0.1, pointRadius: 5 },
+                        { label: '호가 (등록일 기준)', data: asking, borderColor: '#3b82f6', borderDash: [5, 5], tension: 0.1, pointRadius: 4 }
                     ]
                 },
-                options: { responsive: true, maintainAspectRatio: false, scales: { x: { type: 'time' } } }
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    scales: {
+                        x: { type: 'time', time: { unit: 'month' } },
+                        y: { beginAtZero: false }
+                    },
+                    plugins: { legend: { position: 'top' } }
+                }
             });
         }
     </script>
