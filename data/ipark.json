@@ -77,7 +77,8 @@
     "building": "1009",
     "floor": "12",
     "size": 84,
-    "note": "- 27/08/26 입주"
+    "note": "",
+    "moveInDate": "2027-08"
   },
   {
     "regDate": "2026/01/12",
@@ -88,8 +89,18 @@
     "building": "1008",
     "floor": "20",
     "size": 84,
-    "note": "- 26/01/09 9.5 → 9.8\n- 26/01/10 9.8 → 9.5\n- 즉시입주",
-    "isInProgress": true
+    "note": "- 즉시입주",
+    "isInProgress": true,
+    "priceHistory": [
+      {
+        "date": "2025-01-09",
+        "price": 9.5
+      },
+      {
+        "date": "2025-01-10",
+        "price": 9.8
+      }
+    ]
   },
   {
     "regDate": "2026/01/10",
@@ -100,8 +111,15 @@
     "building": "1005",
     "floor": "9",
     "size": 84,
-    "note": "- 26/01/13 매매 → 전세\n- 26/01/09 전세 → 매매\n- 26/01/09 9.5 → 9.4\n- 26/01/08 매매 → 전세\n- 26/03/11 입주\n- 일정 맞추기 가능\n- 해 잘들어올듯",
-    "isInProgress": true
+    "note": "- 일정 맞추기 가능\n- 해 잘들어올듯",
+    "isInProgress": true,
+    "priceHistory": [
+      {
+        "date": "2025-01-09",
+        "price": 9.5
+      }
+    ],
+    "moveInDate": "2026-03"
   },
   {
     "regDate": "2026/01/09",
