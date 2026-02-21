@@ -1,6 +1,6 @@
 [
   {
-    "regDate": "2026/02/21",
+    "regDate": "2026/02/20",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -210,9 +210,9 @@
   },
   {
     "regDate": "2026/01/13",
-    "contractDate": "",
-    "status": "진행 중",
-    "actualPrice": null,
+    "contractDate": "2026/02/07",
+    "status": "완료",
+    "actualPrice": 10.5,
     "askingPrice": 11,
     "building": "109",
     "floor": "고",
