@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>부동산 가격 비교 - 관리자 모드 포함</title>
+    <title>부동산 가격 비교 - 관리자 모드</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
@@ -120,12 +120,9 @@
 
         async function toggleEditMode() {
             if (isEditMode) {
-                if (confirm("편집 모드를 종료하시겠습니까?")) {
-                    location.reload();
-                }
+                if (confirm("편집 모드를 종료하시겠습니까?")) location.reload();
                 return;
             }
-
             const pwd = prompt("관리자 비밀번호:");
             if (!pwd) return;
             if (await sha256(pwd) === ADMIN_HASH) {
@@ -137,12 +134,9 @@
                 document.getElementById('th-action').classList.remove('hidden');
                 document.getElementById('edit-btn-text').innerText = "로그아웃";
                 renderTable();
-            } else {
-                alert("비밀번호 불일치");
-            }
+            } else { alert("비밀번호 불일치"); }
         }
 
-        // 데이터 추가 시 초기값 변경
         function addNewData() {
             const today = new Date().toISOString().split('T')[0];
             const newItem = {
@@ -155,21 +149,19 @@
                 size: currentSize,
                 note: "",
                 isLocked: false,
-                isInProgress: false  // 진행 중 체크박스용 필드 추가
+                isInProgress: false
             };
             currentRawData.unshift(newItem);
             updateView(currentSize);
         }
 
-        // 진행 중 토글 함수
-        function toggleInProgress(idx) {
-            filteredData[idx].isInProgress = !filteredData[idx].isInProgress;
+        function toggleLock(idx) {
+            filteredData[idx].isLocked = !filteredData[idx].isLocked;
             renderTable();
         }
 
-        function toggleLock(idx) {
-            const item = filteredData[idx];
-            item.isLocked = !item.isLocked;
+        function toggleInProgress(idx) {
+            filteredData[idx].isInProgress = !filteredData[idx].isInProgress;
             renderTable();
         }
 
@@ -180,7 +172,7 @@
             } else {
                 item[key] = value;
             }
-            if (key === 'status') renderTable(); // 상태가 '완료'로 바뀌면 즉시 잠금 적용
+            renderTable();
             renderChart();
         }
 
@@ -194,50 +186,29 @@
                 }
             }
         }
-        function getCalculatedStatus(item) {
-            if (item.actualPrice && item.actualPrice > 0) return "완료";
-            if (item.isInProgress) return "진행 중";
-            return "시작 전";
-        }
 
         async function saveToGithub() {
             if (!ghToken) return alert("토큰이 없습니다.");
             const activeBtn = document.querySelector('.tab-btn.tab-active');
-            if (!activeBtn) return alert("단지를 선택해주세요.");
-
             const activeTabId = activeBtn.id.replace('btn-', '');
             const activeTab = tabsConfig.find(t => t.id === activeTabId);
             const filePath = activeTab.file.replace('./', '');
             const apiUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${filePath}?t=${Date.now()}`;
 
             try {
-                const res = await fetch(apiUrl, {
-                    headers: { 'Authorization': `token ${ghToken.trim()}`, 'Accept': 'application/vnd.github.v3+json' }
-                });
-                if (!res.ok) throw new Error("파일 정보를 불러오지 못했습니다.");
+                const res = await fetch(apiUrl, { headers: { 'Authorization': `token ${ghToken.trim()}` } });
                 const fileInfo = await res.json();
-
                 const jsonString = JSON.stringify(currentRawData, null, 2);
                 const updatedContent = btoa(unescape(encodeURIComponent(jsonString)));
 
                 const putRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${filePath}`, {
                     method: 'PUT',
-                    headers: { 
-                        'Authorization': `token ${ghToken.trim()}`,
-                        'Content-Type': 'application/json' 
-                    },
-                    body: JSON.stringify({
-                        message: `Update ${activeTab.name}`,
-                        content: updatedContent,
-                        sha: fileInfo.sha
-                    })
+                    headers: { 'Authorization': `token ${ghToken.trim()}`, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: `Update ${activeTab.name}`, content: updatedContent, sha: fileInfo.sha })
                 });
-
                 if (putRes.ok) alert("✅ 저장 성공!");
                 else alert("❌ 저장 실패");
-            } catch (e) {
-                alert("⚠️ 에러: " + e.message);
-            }
+            } catch (e) { alert("⚠️ 에러: " + e.message); }
         }
 
         function initTabs() {
@@ -252,8 +223,7 @@
 
         async function handleTabClick(file, id) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('tab-active'));
-            const target = document.getElementById(`btn-${id}`);
-            if (target) target.classList.add('tab-active');
+            document.getElementById(`btn-${id}`).classList.add('tab-active');
             await loadData(file, id);
         }
 
@@ -304,24 +274,25 @@
                 else { vA = vA || 0; vB = vB || 0; }
                 return sortConfig.direction === 'asc' ? (vA > vB ? 1 : -1) : (vA < vB ? 1 : -1);
             });
-        
+
             tbody.innerHTML = sorted.map((item) => {
                 const realIdx = filteredData.indexOf(item);
                 
-                // --- 상태 로직 계산 ---
-                const status = (item.actualPrice && item.actualPrice > 0) ? "완료" : (item.isInProgress ? "진행 중" : "시작 전");
+                // ★ 완료 조건 수정: 실거래가 존재 AND 계약일 존재
+                const hasActual = item.actualPrice && item.actualPrice > 0;
+                const hasContractDate = item.contractDate && item.contractDate.trim() !== "";
                 
-                // 수정 불가 조건: 수동 잠금이거나 상태가 '완료'인 경우
+                const status = (hasActual && hasContractDate) ? "완료" : (item.isInProgress ? "진행 중" : "시작 전");
                 const isReadonly = item.isLocked || status === "완료";
                 const disabledAttr = isReadonly ? "disabled" : "";
-                const bgClass = isReadonly ? 'bg-slate-100/50' : 'bg-blue-50/20';
-        
+                const bgClass = isReadonly ? 'bg-slate-100/80' : 'bg-blue-50/20';
+
                 if (isEditMode) {
                     return `
                     <tr class="${bgClass} transition-colors">
                         <td class="px-4 py-2 flex flex-col gap-1">
                             <input class="edit-input font-bold" type="text" value="${item.regDate}" onchange="updateDataValue(${realIdx}, 'regDate', this.value)" ${disabledAttr}>
-                            <input class="edit-input text-[10px]" type="text" value="${item.contractDate || ''}" onchange="updateDataValue(${realIdx}, 'contractDate', this.value)" ${disabledAttr} placeholder="계약일">
+                            <input class="edit-input text-[10px] ${!hasContractDate && hasActual ? 'border-red-400 bg-red-50' : ''}" type="text" value="${item.contractDate || ''}" onchange="updateDataValue(${realIdx}, 'contractDate', this.value)" ${disabledAttr} placeholder="계약일 입력필수">
                         </td>
                         <td class="px-2 py-2 text-center">
                             <div class="flex flex-col items-center gap-1">
@@ -335,8 +306,8 @@
                                 ` : ''}
                             </div>
                         </td>
-                        <td class="px-2 py-2"><input class="edit-input text-right text-red-600 font-bold" type="number" step="0.01" value="${item.actualPrice || ''}" onchange="updateDataValue(${realIdx}, 'actualPrice', this.value)" ${disabledAttr} placeholder="실거래가"></td>
-                        <td class="px-2 py-2"><input class="edit-input text-right text-blue-600 font-bold" type="number" step="0.01" value="${item.askingPrice || ''}" onchange="updateDataValue(${realIdx}, 'askingPrice', this.value)" ${disabledAttr} placeholder="호가"></td>
+                        <td class="px-2 py-2"><input class="edit-input text-right text-red-600 font-bold" type="number" step="0.01" value="${item.actualPrice || ''}" onchange="updateDataValue(${realIdx}, 'actualPrice', this.value)" ${disabledAttr}></td>
+                        <td class="px-2 py-2"><input class="edit-input text-right text-blue-600 font-bold" type="number" step="0.01" value="${item.askingPrice || ''}" onchange="updateDataValue(${realIdx}, 'askingPrice', this.value)" ${disabledAttr}></td>
                         <td class="px-2 py-2">
                             <input class="edit-input mb-1" type="text" value="${item.building}" onchange="updateDataValue(${realIdx}, 'building', this.value)" ${disabledAttr} placeholder="동">
                             <input class="edit-input" type="text" value="${item.floor}" onchange="updateDataValue(${realIdx}, 'floor', this.value)" ${disabledAttr} placeholder="층">
@@ -352,11 +323,9 @@
                         </td>
                     </tr>`;
                 }
-        
-                // --- 뷰 모드 ---
+
                 const diff = (item.actualPrice && item.askingPrice) ? (item.askingPrice - item.actualPrice).toFixed(2) : null;
                 const statusColor = status === '완료' ? 'bg-green-100 text-green-700' : (status === '진행 중' ? 'bg-blue-100 text-blue-700' : 'bg-slate-100 text-slate-600');
-                
                 return `
                 <tr class="hover:bg-slate-50 transition-colors">
                     <td class="px-6 py-4"><div class="font-bold text-slate-700">${item.regDate}</div><div class="text-[10px] text-slate-400">${item.contractDate || '-'}</div></td>
