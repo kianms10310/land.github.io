@@ -19,8 +19,9 @@
     "building": "1001",
     "floor": "고",
     "size": 59,
-    "note": "• 27/03/21 입주\n• 올수리",
-    "isLocked": false
+    "note": "• 올수리",
+    "isLocked": false,
+    "moveInDate": "2027-03"
   },
   {
     "regDate": "2026/02/21",
