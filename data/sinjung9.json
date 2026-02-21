@@ -30,7 +30,8 @@
     "building": "901",
     "floor": "2",
     "size": 49,
-    "note": "- 27/03 입주"
+    "note": "",
+    "moveInDate": "2027-03"
   },
   {
     "regDate": "2026/02/12",
@@ -41,7 +42,8 @@
     "building": "901",
     "floor": "4",
     "size": 49,
-    "note": "- 26/09 입주"
+    "note": "",
+    "moveInDate": "2026-09"
   },
   {
     "regDate": "2026/02/11",
@@ -52,7 +54,8 @@
     "building": "908",
     "floor": "고",
     "size": 49,
-    "note": "- 26/10/30 입주"
+    "note": "",
+    "moveInDate": "2026-10"
   },
   {
     "regDate": "2026/02/11",
@@ -63,7 +66,8 @@
     "building": "905",
     "floor": "16",
     "size": 49,
-    "note": "- 27/12/15 입주"
+    "note": "",
+    "moveInDate": "2027-12"
   },
   {
     "regDate": "2026/02/10",
@@ -85,7 +89,14 @@
     "building": "901",
     "floor": "10",
     "size": 49,
-    "note": "- 26/02/10 10.5 → 10.6\n- 26/04 입주\n- 샷시포함 올수리\n- 중문, 베란다 확장"
+    "note": "- 샷시포함 올수리\n- 중문, 베란다 확장",
+    "priceHistory": [
+      {
+        "date": "2026-02-10",
+        "price": 10.5
+      }
+    ],
+    "moveInDate": "2026-04"
   },
   {
     "regDate": "2026/02/10",
@@ -107,8 +118,9 @@
     "building": "905",
     "floor": "1",
     "size": 49,
-    "note": "- 26/04 입주",
-    "isInProgress": false
+    "note": "",
+    "isInProgress": false,
+    "moveInDate": "2026-04"
   },
   {
     "regDate": "2026/01/31",
