@@ -260,7 +260,11 @@
                     <td class="px-4 py-4 text-right font-mono font-bold text-red-600">${item.actualPrice ? item.actualPrice.toFixed(2) : '-'}</td>
                     <td class="px-4 py-4 text-right">
                         <div class="font-mono font-bold text-blue-600">${item.askingPrice ? item.askingPrice.toFixed(2) : '-'}</div>
-                        <div class="text-[9px] text-slate-400 mt-1">${item.priceHistory && item.priceHistory.length > 0 ? `p: ${item.priceHistory[item.priceHistory.length-1].price} (${item.priceHistory[item.priceHistory.length-1].date.slice(5)})` : ''}</div>
+                        <div class="text-[9px] text-slate-400 mt-1 space-y-0.5">
+                            ${item.priceHistory && item.priceHistory.length > 0 
+                                ? item.priceHistory.map(h => `<div>${h.date.slice(5).replace('-', '/')} : ${h.price.toFixed(2)}</div>`).join('') 
+                                : ''}
+                        </div>
                     </td>
                     <td class="px-4 py-4 text-center text-xs text-slate-500">${item.building}동 / ${item.floor}층</td>
                     <td class="px-4 py-4 text-xs text-slate-500 italic">${item.note ? item.note.replace(/\n/g, '<br>') : ''}</td>
