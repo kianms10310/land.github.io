@@ -32,7 +32,8 @@
     "building": "201",
     "floor": "17",
     "size": 84,
-    "note": "- 26/10 협의\n- 일부수리"
+    "note": "- 일부수리",
+    "moveInDate": "2026-10"
   },
   {
     "regDate": "2026/02/21",
@@ -43,8 +44,9 @@
     "building": "206",
     "floor": "중",
     "size": 59,
-    "note": "- 27/10/27 입주",
-    "isLocked": false
+    "note": "",
+    "isLocked": false,
+    "moveInDate": "2027-10"
   },
   {
     "regDate": "2026/02/20",
@@ -90,8 +92,9 @@
     "building": "201",
     "floor": "고",
     "size": 84,
-    "note": "• 26/07 입주\n• 샷시제외 올수리",
-    "isLocked": false
+    "note": "• 샷시제외 올수리",
+    "isLocked": false,
+    "moveInDate": "2026-07"
   },
   {
     "regDate": "2026/02/21",
@@ -147,7 +150,8 @@
     "building": "204",
     "floor": "저",
     "size": 59,
-    "note": "- 27/07/28 입주"
+    "note": "",
+    "moveInDate": "2027-07"
   },
   {
     "regDate": "2026/02/21",
@@ -169,8 +173,9 @@
     "building": "201",
     "floor": "9",
     "size": 84,
-    "note": "- 26/05/20 입주\n- 씽크대화장실 화이트 수리\n- 방1확장",
-    "isLocked": false
+    "note": "- 씽크대화장실 화이트 수리\n- 방1확장",
+    "isLocked": false,
+    "moveInDate": "2026-05"
   },
   {
     "regDate": "2026/02/21",
