@@ -201,9 +201,11 @@
             try {
                 // 1. 최신 SHA 값 가져오기 (충돌 방지용 필수 단계)
                 const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${filePath}`, {
+                    method: 'GET', // 명시적으로 GET 선언
                     headers: { 
-                        'Authorization': `token ${ghToken}`,
-                        'Cache-Control': 'no-cache' 
+                        'Authorization': `token ${ghToken.trim()}`, // 혹시 모를 공백 제거
+                        'Accept': 'application/vnd.github.v3+json',
+                        'Cache-Control': 'no-cache'
                     }
                 });
         
