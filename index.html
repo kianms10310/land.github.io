@@ -341,7 +341,7 @@
                     <td class="px-6 py-4 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600">${item.status}</span></td>
                     <td class="px-6 py-4 text-right">
                         <div class="font-mono font-bold text-red-600">${item.actualPrice ? item.actualPrice.toFixed(2) : '-'}</div>
-                        ${diff ? `<div class="text-[10px] font-bold ${diff > 0 ? 'text-red-500' : 'text-blue-500'}">${diff > 0 ? '▲' : '▼'} ${Math.abs(diff)}</div>` : ''}
+                        ${diff ? `<div class="text-[10px] font-bold ${diff > 0 ? 'text-blue-500' : 'text-red-500'}">${diff > 0 ? '▼' : '▲'} ${Math.abs(diff)}</div>` : ''}
                     </td>
                     <td class="px-6 py-4 text-right font-mono font-bold text-blue-600">${item.askingPrice ? item.askingPrice.toFixed(2) : '-'}</td>
                     <td class="px-6 py-4 text-center text-xs text-slate-600">${item.building}동 / ${item.floor}층</td>
