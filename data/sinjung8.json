@@ -9,7 +9,7 @@
     "floor": "20",
     "size": 59,
     "note": "- 27/05/04 입주\n- 올수리\n- 올 확장",
-    "isLocked": true
+    "isLocked": false
   },
   {
     "regDate": "2026/02/21",
@@ -21,7 +21,7 @@
     "floor": "5",
     "size": 59,
     "note": "• 26/10 입주\n• 거실, 방1확장",
-    "isLocked": true
+    "isLocked": false
   },
   {
     "regDate": "2026/02/20",
@@ -68,7 +68,7 @@
     "note": "• 26/02/14 10.5 → 10.8\n• 26/05/28 입주"
   },
   {
-    "regDate": "2026/02/20",
+    "regDate": "2026/02/21",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -121,7 +121,7 @@
     "floor": "1",
     "size": 59,
     "note": "• 26/02/10 10 → 10.4\n• 26/02/19 10.4 → 10.2",
-    "isLocked": true
+    "isLocked": false
   },
   {
     "regDate": "2026/02/13",
@@ -144,7 +144,7 @@
     "floor": "3",
     "size": 59,
     "note": "- 26/05/27 입주\n- 방2 확장\n- 내부수리",
-    "isLocked": true
+    "isLocked": false
   },
   {
     "regDate": "2026/02/11",
@@ -167,7 +167,7 @@
     "floor": "5",
     "size": 59,
     "note": "- 26/01/29 11.3 → 11.5\n- 26/02/11 11.5 → 11.2\n- 26/03/20 입주\n- 방거실 확장",
-    "isLocked": true
+    "isLocked": false
   },
   {
     "regDate": "2026/02/10",
