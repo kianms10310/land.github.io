@@ -8,7 +8,14 @@
     "building": "508",
     "floor": "13",
     "size": 59,
-    "note": "• 26/02/20 10 → 9.8\n• 26/07/28 협의\n• 화이트특올수리\n• 확장형"
+    "note": "• 화이트특올수리\n• 확장형",
+    "priceHistory": [
+      {
+        "date": "2025-02-20",
+        "price": 10
+      }
+    ],
+    "moveInDate": "2026-07"
   },
   {
     "regDate": "2026/02/20",
@@ -19,7 +26,13 @@
     "building": "502",
     "floor": "16",
     "size": 59,
-    "note": "• 26/02/20 9.2 → 9.5"
+    "note": "",
+    "priceHistory": [
+      {
+        "date": "2025-02-20",
+        "price": 9.2
+      }
+    ]
   },
   {
     "regDate": "2026/02/20",
@@ -30,7 +43,13 @@
     "building": "506",
     "floor": "6",
     "size": 59,
-    "note": "• 26/02/20 9.2 → 9.4"
+    "note": "",
+    "priceHistory": [
+      {
+        "date": "2025-02-20",
+        "price": 9.2
+      }
+    ]
   },
   {
     "regDate": "2026/02/19",
@@ -41,7 +60,8 @@
     "building": "511",
     "floor": "중",
     "size": 59,
-    "note": "• 26/06/28 입주\n• 올수리"
+    "note": "• 올수리",
+    "moveInDate": "2026-06"
   },
   {
     "regDate": "2026/02/14",
@@ -52,7 +72,8 @@
     "building": "503",
     "floor": "고",
     "size": 59,
-    "note": "- 27/02 입주"
+    "note": "",
+    "moveInDate": "2027-02"
   },
   {
     "regDate": "2026/02/14",
@@ -63,7 +84,13 @@
     "building": "508",
     "floor": "7",
     "size": 59,
-    "note": "- 26/02/14 9.3 → 9.4"
+    "note": "",
+    "priceHistory": [
+      {
+        "date": "2025-02-14",
+        "price": 9.3
+      }
+    ]
   },
   {
     "regDate": "2026/02/14",
@@ -74,7 +101,8 @@
     "building": "506",
     "floor": "중",
     "size": 59,
-    "note": "- 26/06 협의"
+    "note": "",
+    "moveInDate": "2026-06"
   },
   {
     "regDate": "2026/02/12",
@@ -85,7 +113,8 @@
     "building": "508",
     "floor": "고",
     "size": 59,
-    "note": "- 27/12/16 입주\n- 올수리"
+    "note": "- 올수리",
+    "moveInDate": "2027-12"
   },
   {
     "regDate": "2026/02/12",
@@ -96,7 +125,8 @@
     "building": "511",
     "floor": "9",
     "size": 59,
-    "note": "- 26/09/12 입주"
+    "note": "",
+    "moveInDate": "2026-09"
   },
   {
     "regDate": "2026/02/03",
@@ -129,7 +159,13 @@
     "building": "503",
     "floor": "9",
     "size": 59,
-    "note": "- 26/01/09 8.9 → 9.2"
+    "note": "",
+    "priceHistory": [
+      {
+        "date": "2025-01-09",
+        "price": 8.9
+      }
+    ]
   },
   {
     "regDate": "2026/01/06",
