@@ -181,70 +181,60 @@
         }
 
         async function saveToGithub() {
-            console.log("저장 프로세스 시작..."); // F12 콘솔에서 확인 가능
+            if (!ghToken) return alert("GitHub 토큰이 없습니다.");
         
-            if (!ghToken) {
-                alert("GitHub 토큰이 없습니다. 관리자 모드를 다시 실행해 주세요.");
-                return;
-            }
+            const activeBtn = document.querySelector('.tab-btn.tab-active');
+            if (!activeBtn) return alert("단지 탭을 다시 클릭해 주세요.");
         
-            // 현재 활성화된 탭 찾기
-            const activeBtn = document.querySelector('.tab-active');
-            if (!activeBtn) return alert("활성화된 단지를 찾을 수 없습니다.");
-            
             const activeTabId = activeBtn.id.replace('btn-', '');
             const activeTab = tabsConfig.find(t => t.id === activeTabId);
+            // 캐시 방지를 위해 URL 뒤에 무작위 값을 붙입니다.
             const filePath = activeTab.file.replace('./', '');
-        
-            console.log("저장 대상 파일:", filePath);
+            const apiUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${filePath}?t=${Date.now()}`;
         
             try {
-                // 1. 최신 SHA 값 가져오기 (충돌 방지용 필수 단계)
-                const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${filePath}`, {
-                    method: 'GET', // 명시적으로 GET 선언
+                // 1. 파일 정보 가져오기 (헤더에서 Cache-Control 제거)
+                const res = await fetch(apiUrl, {
+                    method: 'GET',
                     headers: { 
-                        'Authorization': `token ${ghToken.trim()}`, // 혹시 모를 공백 제거
-                        'Accept': 'application/vnd.github.v3+json',
-                        'Cache-Control': 'no-cache'
+                        'Authorization': `token ${ghToken.trim()}`,
+                        'Accept': 'application/vnd.github.v3+json'
                     }
                 });
         
                 if (!res.ok) {
-                    const errorInfo = await res.json();
-                    throw new Error(`파일 정보를 가져오지 못했습니다: ${errorInfo.message}`);
+                    const err = await res.json();
+                    throw new Error(err.message || "파일 정보를 불러오지 못했습니다.");
                 }
-        
                 const fileInfo = await res.json();
-                const sha = fileInfo.sha;
         
-                // 2. 데이터 업로드 (Base64 인코딩)
-                // unescape/encodeURIComponent는 한글 깨짐 방지용입니다.
+                // 2. 데이터 업데이트 시도
                 const jsonString = JSON.stringify(currentRawData, null, 2);
                 const updatedContent = btoa(unescape(encodeURIComponent(jsonString)));
         
                 const putRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${filePath}`, {
                     method: 'PUT',
                     headers: { 
-                        'Authorization': `token ${ghToken}`, 
+                        'Authorization': `token ${ghToken.trim()}`, 
+                        'Accept': 'application/vnd.github.v3+json',
                         'Content-Type': 'application/json' 
                     },
                     body: JSON.stringify({
-                        message: `Update ${activeTab.name} data via Admin Panel`,
+                        message: `Update ${activeTab.name} data`,
                         content: updatedContent,
-                        sha: sha
+                        sha: fileInfo.sha
                     })
                 });
         
                 if (putRes.ok) {
-                    alert("✅ 성공: GitHub 저장소에 반영되었습니다.\n(실제 사이트 적용까지 1~2분 소요)");
+                    alert(`✅ [${activeTab.name}] 저장 성공! 약 1분 뒤 반영됩니다.`);
                 } else {
                     const errorData = await putRes.json();
                     alert(`❌ 저장 실패: ${errorData.message}`);
                 }
-        
             } catch (e) {
-                console.error(e);
-                alert(`⚠️ 오류 발생: ${e.message}`);
+                alert(`⚠️ 오류: ${e.message}`);
+                console.error("CORS 또는 네트워크 에러 상세:", e);
             }
         }
 
