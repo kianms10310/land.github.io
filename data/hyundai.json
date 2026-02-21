@@ -1,5 +1,17 @@
 [
   {
+    "regDate": "2026-02-21",
+    "contractDate": "",
+    "actualPrice": null,
+    "askingPrice": 10.3,
+    "building": "201",
+    "floor": "14",
+    "size": 84,
+    "note": "- 방1 확장",
+    "isLocked": false,
+    "isInProgress": false
+  },
+  {
     "regDate": "2026/02/21",
     "contractDate": "",
     "status": "시작 전",
@@ -105,7 +117,7 @@
     "isLocked": false
   },
   {
-    "regDate": "2026/02/19",
+    "regDate": "2026/02/21",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -165,11 +177,11 @@
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
-    "askingPrice": 10.3,
+    "askingPrice": 10.2,
     "building": "205",
     "floor": "고",
     "size": 84,
-    "note": "- 일부수리"
+    "note": "- 26/02/21 10.3 > 10.2\n- 일부수리"
   },
   {
     "regDate": "2026/02/21",
