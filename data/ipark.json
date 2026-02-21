@@ -15,7 +15,7 @@
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
-    "askingPrice": null,
+    "askingPrice": 9.3,
     "building": "1001",
     "floor": "고",
     "size": 59,
@@ -44,11 +44,11 @@
     "note": "- 올수리"
   },
   {
-    "regDate": "2026/02/19",
+    "regDate": "2026/02/21",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
-    "askingPrice": 9.8,
+    "askingPrice": 10.1,
     "building": "1010",
     "floor": "고",
     "size": 59,
