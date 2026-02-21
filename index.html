@@ -181,33 +181,68 @@
         }
 
         async function saveToGithub() {
-            if (!ghToken) return alert("토큰이 없습니다.");
-            const activeTab = tabsConfig.find(t => document.getElementById(`btn-${t.id}`).classList.contains('tab-active'));
+            console.log("저장 프로세스 시작..."); // F12 콘솔에서 확인 가능
+        
+            if (!ghToken) {
+                alert("GitHub 토큰이 없습니다. 관리자 모드를 다시 실행해 주세요.");
+                return;
+            }
+        
+            // 현재 활성화된 탭 찾기
+            const activeBtn = document.querySelector('.tab-active');
+            if (!activeBtn) return alert("활성화된 단지를 찾을 수 없습니다.");
+            
+            const activeTabId = activeBtn.id.replace('btn-', '');
+            const activeTab = tabsConfig.find(t => t.id === activeTabId);
             const filePath = activeTab.file.replace('./', '');
-
+        
+            console.log("저장 대상 파일:", filePath);
+        
             try {
+                // 1. 최신 SHA 값 가져오기 (충돌 방지용 필수 단계)
                 const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${filePath}`, {
-                    headers: { 'Authorization': `token ${ghToken}`, 'Cache-Control': 'no-cache' }
+                    headers: { 
+                        'Authorization': `token ${ghToken}`,
+                        'Cache-Control': 'no-cache' 
+                    }
                 });
-                
-                if (!res.ok) throw new Error("파일 정보를 가져오지 못했습니다. 경로를 확인하세요.");
+        
+                if (!res.ok) {
+                    const errorInfo = await res.json();
+                    throw new Error(`파일 정보를 가져오지 못했습니다: ${errorInfo.message}`);
+                }
+        
                 const fileInfo = await res.json();
-                
-                const updatedContent = btoa(unescape(encodeURIComponent(JSON.stringify(currentRawData, null, 2))));
+                const sha = fileInfo.sha;
+        
+                // 2. 데이터 업로드 (Base64 인코딩)
+                // unescape/encodeURIComponent는 한글 깨짐 방지용입니다.
+                const jsonString = JSON.stringify(currentRawData, null, 2);
+                const updatedContent = btoa(unescape(encodeURIComponent(jsonString)));
+        
                 const putRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${filePath}`, {
                     method: 'PUT',
-                    headers: { 'Authorization': `token ${ghToken}`, 'Content-Type': 'application/json' },
+                    headers: { 
+                        'Authorization': `token ${ghToken}`, 
+                        'Content-Type': 'application/json' 
+                    },
                     body: JSON.stringify({
-                        message: `Update ${activeTab.name} data`,
+                        message: `Update ${activeTab.name} data via Admin Panel`,
                         content: updatedContent,
-                        sha: fileInfo.sha
+                        sha: sha
                     })
                 });
-
-                if (putRes.ok) alert("✅ GitHub에 성공적으로 저장되었습니다!");
-                else alert("❌ 저장 실패: " + (await putRes.json()).message);
+        
+                if (putRes.ok) {
+                    alert("✅ 성공: GitHub 저장소에 반영되었습니다.\n(실제 사이트 적용까지 1~2분 소요)");
+                } else {
+                    const errorData = await putRes.json();
+                    alert(`❌ 저장 실패: ${errorData.message}`);
+                }
+        
             } catch (e) {
-                alert("❌ 에러: " + e.message);
+                console.error(e);
+                alert(`⚠️ 오류 발생: ${e.message}`);
             }
         }
 
