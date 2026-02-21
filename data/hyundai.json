@@ -32,7 +32,7 @@
     "floor": "중",
     "size": 59,
     "note": "- 27/10/27 입주",
-    "isLocked": true
+    "isLocked": false
   },
   {
     "regDate": "2026/02/20",
@@ -55,7 +55,7 @@
     "floor": "13",
     "size": 59,
     "note": "- 부분수리",
-    "isLocked": true
+    "isLocked": false
   },
   {
     "regDate": "2026/02/21",
@@ -67,7 +67,7 @@
     "floor": "고",
     "size": 59,
     "note": "• 샷시제외 올수리",
-    "isLocked": true
+    "isLocked": false
   },
   {
     "regDate": "2026/02/20",
@@ -102,7 +102,7 @@
     "floor": "중",
     "size": 59,
     "note": "• 올수리",
-    "isLocked": true
+    "isLocked": false
   },
   {
     "regDate": "2026/02/19",
