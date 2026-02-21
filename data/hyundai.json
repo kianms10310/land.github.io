@@ -26,17 +26,6 @@
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
-    "askingPrice": 9.5,
-    "building": "206",
-    "floor": "고",
-    "size": 59,
-    "note": "• 샷시제외 올수리"
-  },
-  {
-    "regDate": "2026/02/20",
-    "contractDate": "",
-    "status": "시작 전",
-    "actualPrice": null,
     "askingPrice": 10.3,
     "building": "201",
     "floor": "중",
@@ -44,7 +33,7 @@
     "note": "- 씽크대교체\n- 화장실교체"
   },
   {
-    "regDate": "2026/02/20",
+    "regDate": "2026/02/21",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -55,7 +44,7 @@
     "note": "- 부분수리"
   },
   {
-    "regDate": "2026/02/20",
+    "regDate": "2026/02/21",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -99,7 +88,7 @@
     "note": "- 27/05/31 입주"
   },
   {
-    "regDate": "2026/02/19",
+    "regDate": "2026/02/21",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
