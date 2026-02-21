@@ -1,5 +1,16 @@
 [
   {
+    "regDate": "2026-02-21",
+    "contractDate": "",
+    "status": "시작 전",
+    "actualPrice": null,
+    "askingPrice": 10.3,
+    "building": "203",
+    "floor": "고",
+    "size": 84,
+    "note": "• 샷시제외 올수리"
+  },
+  {
     "regDate": "2026/02/20",
     "contractDate": "",
     "status": "시작 전",
@@ -63,7 +74,7 @@
     "building": "201",
     "floor": "고",
     "size": 84,
-    "note": "• 26/07 입주"
+    "note": "• 26/07 입주\n• 샷시제외 올수리"
   },
   {
     "regDate": "2026/02/19",
@@ -75,17 +86,6 @@
     "floor": "6",
     "size": 59,
     "note": "- 즉시입주"
-  },
-  {
-    "regDate": "2026/02/19",
-    "contractDate": "",
-    "status": "시작 전",
-    "actualPrice": null,
-    "askingPrice": 10.3,
-    "building": "205",
-    "floor": "14",
-    "size": 84,
-    "note": "- 27/05/31 입주"
   },
   {
     "regDate": "2026/02/21",
