@@ -19,7 +19,8 @@
     "building": "1001",
     "floor": "고",
     "size": 59,
-    "note": "• 27/03/21 입주\n• 올수리"
+    "note": "• 27/03/21 입주\n• 올수리",
+    "isLocked": false
   },
   {
     "regDate": "2026/02/21",
@@ -33,7 +34,7 @@
     "note": ""
   },
   {
-    "regDate": "2026/02/19",
+    "regDate": "2026/02/21",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -52,10 +53,11 @@
     "building": "1010",
     "floor": "고",
     "size": 59,
-    "note": "• 특올수리"
+    "note": "• 특올수리",
+    "isLocked": false
   },
   {
-    "regDate": "2026/02/14",
+    "regDate": "2026/02/21",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
