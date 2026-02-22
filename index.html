@@ -239,7 +239,7 @@
                 else { vA = vA || 0; vB = vB || 0; }
                 return sortConfig.direction === 'asc' ? (vA > vB ? 1 : -1) : (vA < vB ? 1 : -1);
             });
-
+        
             tbody.innerHTML = sorted.map((item) => {
                 const realIdx = filteredData.indexOf(item);
                 const hasActual = item.actualPrice && item.actualPrice > 0;
@@ -247,8 +247,19 @@
                 const status = (hasActual && hasContract) ? "완료" : (item.isInProgress ? "진행 중" : "시작 전");
                 const isReadonly = item.isLocked || status === "완료";
                 const disabledAttr = isReadonly ? "disabled" : "";
-
+        
+                // --- 가격 차이(Gap) 계산 로직 추가 ---
+                let gapHtml = "";
+                if (item.actualPrice && item.askingPrice) {
+                    const gap = (item.askingPrice - item.actualPrice).toFixed(2);
+                    const gapColor = gap > 0 ? 'text-red-500' : (gap < 0 ? 'text-blue-500' : 'text-slate-400');
+                    const gapSign = gap > 0 ? '+' : '';
+                    gapHtml = `<span class="${gapColor} font-bold ml-1 tracking-tight">(${gapSign}${gap})</span>`;
+                }
+                // ----------------------------------
+        
                 if (isEditMode) {
+                    // ... (관리자 모드 코드는 그대로 유지)
                     return `
                     <tr class="${isReadonly ? 'bg-slate-100/60' : 'bg-white'} hover:bg-slate-50 transition-colors">
                         <td class="px-2 py-3 flex flex-col gap-1">
@@ -274,8 +285,8 @@
                         </td>
                     </tr>`;
                 }
-
-                // 뷰 모드
+        
+                // 뷰 모드 리턴 (Gap 표시 추가)
                 return `
                 <tr class="hover:bg-slate-50 transition-colors">
                     <td class="px-4 py-4"><div class="font-bold text-slate-700">${item.regDate}</div><div class="text-[10px] text-slate-400">${item.contractDate || '-'}</div></td>
@@ -283,7 +294,10 @@
                     <td class="px-4 py-4 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold ${status==='완료'?'bg-green-100 text-green-700':(status==='진행 중'?'bg-blue-100 text-blue-700':'bg-slate-100 text-slate-600')}">${status}</span></td>
                     <td class="px-4 py-4 text-right font-mono font-bold text-red-600">${item.actualPrice ? item.actualPrice.toFixed(2) : '-'}</td>
                     <td class="px-4 py-4 text-right">
-                        <div class="font-mono font-bold text-blue-600">${item.askingPrice ? item.askingPrice.toFixed(2) : '-'}</div>
+                        <div class="font-mono font-bold text-blue-600">
+                            ${item.askingPrice ? item.askingPrice.toFixed(2) : '-'}
+                            ${gapHtml} 
+                        </div>
                         <div class="text-[9px] text-slate-400 mt-1 space-y-0.5">
                             ${item.priceHistory && item.priceHistory.length > 0 
                                 ? item.priceHistory.map(h => `<div>${h.date.slice(5).replace('-', '/')} : ${h.price.toFixed(2)}</div>`).join('') 
