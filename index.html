@@ -251,10 +251,14 @@
                 // --- 가격 차이(Gap) 계산 로직 추가 ---
                 let gapHtml = "";
                 if (item.actualPrice && item.askingPrice) {
-                    const gap = (item.actualPrice - item.askingPrice).toFixed(2);
-                    const gapColor = gap > 0 ? 'text-red-500' : (gap < 0 ? 'text-blue-500' : 'text-slate-400');
-                    const gapSign = gap > 0 ? '+' : '';
-                    gapHtml = `<span class="${gapColor} font-bold ml-1 tracking-tight">(${gapSign}${gap})</span>`;
+                    const gapValue = item.actualPrice - item.askingPrice;
+
+                    if (gapValue != 0) {
+                        const gap = (item.actualPrice - item.askingPrice).toFixed(2);
+                        const gapColor = gap > 0 ? 'text-red-500' : (gap < 0 ? 'text-blue-500' : 'text-slate-400');
+                        const gapSign = gap > 0 ? '+' : '';
+                        gapHtml = `<span class="${gapColor} font-bold ml-1 tracking-tight">(${gapSign}${gap})</span>`;
+                    }
                 }
                 // ----------------------------------
         
