@@ -137,7 +137,8 @@
     "building": "509",
     "floor": "중",
     "size": 59,
-    "note": ""
+    "note": "",
+    "isInProgress": true
   },
   {
     "regDate": "2026/01/20",
@@ -165,7 +166,8 @@
         "date": "2025-01-09",
         "price": 8.9
       }
-    ]
+    ],
+    "isInProgress": true
   },
   {
     "regDate": "2026/01/06",
