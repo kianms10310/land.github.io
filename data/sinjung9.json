@@ -1,19 +1,5 @@
 [
   {
-    "regDate": "2026-02-05",
-    "contractDate": "",
-    "moveInDate": "",
-    "actualPrice": null,
-    "askingPrice": 10.5,
-    "building": "901",
-    "floor": "6",
-    "size": 49,
-    "note": "- 올수리\n- 중문",
-    "isLocked": false,
-    "isInProgress": false,
-    "priceHistory": []
-  },
-  {
     "regDate": "2026/02/20",
     "contractDate": "",
     "status": "시작 전",
@@ -92,8 +78,7 @@
     "building": "906",
     "floor": "고",
     "size": 49,
-    "note": "",
-    "isInProgress": true
+    "note": ""
   },
   {
     "regDate": "2026/02/10",
@@ -146,7 +131,7 @@
     "building": "905",
     "floor": "1",
     "size": 49,
-    "note": "- 샷시포함올수리\n- 거실확장",
+    "note": "",
     "isInProgress": false
   },
   {
@@ -203,7 +188,8 @@
     "building": "902",
     "floor": "7",
     "size": 59,
-    "note": "- 급매\n- 예전올수리"
+    "note": "- 급매\n- 예전올수리",
+    "isInProgress": true
   },
   {
     "regDate": "2026/02/10",
@@ -214,18 +200,15 @@
     "building": "902",
     "floor": "9",
     "size": 59,
-    "note": "- 26/02/09 11.5 → 11\n- 26/05 입주\n- 올수리\n- 폴딩도어"
-  },
-  {
-    "regDate": "2026/02/05",
-    "contractDate": "",
-    "status": "시작 전",
-    "actualPrice": null,
-    "askingPrice": 10.5,
-    "building": "901",
-    "floor": "6",
-    "size": 59,
-    "note": "- 올수리\n- 중문"
+    "note": "- 올수리\n- 폴딩도어",
+    "isInProgress": true,
+    "priceHistory": [
+      {
+        "date": "2026-02-09",
+        "price": 11.5
+      }
+    ],
+    "moveInDate": "2026-05"
   },
   {
     "regDate": "2026/02/03",
@@ -236,7 +219,14 @@
     "building": "909",
     "floor": "중",
     "size": 59,
-    "note": "- 26/02/05 12 → 11.5"
+    "note": "",
+    "isInProgress": true,
+    "priceHistory": [
+      {
+        "date": "2026-02-05",
+        "price": 12
+      }
+    ]
   },
   {
     "regDate": "2025/12/12",
