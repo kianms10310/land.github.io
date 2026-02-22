@@ -217,7 +217,8 @@
     "building": "102",
     "floor": "중",
     "size": 59,
-    "note": "- 화장실 최근 수리\n- 씽크대 수리\n- 아일랜드 식탁"
+    "note": "- 화장실 최근 수리\n- 씽크대 수리\n- 아일랜드 식탁",
+    "isInProgress": true
   },
   {
     "regDate": "2026/01/29",
@@ -229,7 +230,8 @@
     "floor": "저",
     "size": 59,
     "note": "- 올수리",
-    "moveInDate": "2026-08"
+    "moveInDate": "2026-08",
+    "isInProgress": true
   },
   {
     "regDate": "2026/01/15",
@@ -240,7 +242,8 @@
     "building": "104",
     "floor": "중",
     "size": 59,
-    "note": ""
+    "note": "",
+    "isInProgress": true
   },
   {
     "regDate": "2026/01/13",
