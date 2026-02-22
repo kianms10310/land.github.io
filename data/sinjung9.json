@@ -1,5 +1,19 @@
 [
   {
+    "regDate": "2026-02-05",
+    "contractDate": "",
+    "moveInDate": "",
+    "actualPrice": null,
+    "askingPrice": 10.5,
+    "building": "901",
+    "floor": "6",
+    "size": 49,
+    "note": "- 올수리\n- 중문",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
     "regDate": "2026/02/20",
     "contractDate": "",
     "status": "시작 전",
@@ -78,7 +92,8 @@
     "building": "906",
     "floor": "고",
     "size": 49,
-    "note": ""
+    "note": "",
+    "isInProgress": true
   },
   {
     "regDate": "2026/02/10",
@@ -131,7 +146,7 @@
     "building": "905",
     "floor": "1",
     "size": 49,
-    "note": "",
+    "note": "- 샷시포함올수리\n- 거실확장",
     "isInProgress": false
   },
   {
