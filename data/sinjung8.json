@@ -240,7 +240,7 @@
     "building": "802",
     "floor": "3",
     "size": 59,
-    "note": ""
+    "note": "- 씽크대, 화장실 부분수리"
   },
   {
     "regDate": "2026/02/10",
@@ -326,7 +326,8 @@
     "building": "810",
     "floor": "7",
     "size": 59,
-    "note": "- 샷시포함 올수리"
+    "note": "- 샷시포함 올수리",
+    "isInProgress": true
   },
   {
     "regDate": "2026/02/03",
@@ -337,19 +338,30 @@
     "building": "810",
     "floor": "19",
     "size": 59,
-    "note": "- 올확장"
+    "note": "- 올확장",
+    "isInProgress": true
   },
   {
-    "regDate": "2026/01/29",
+    "regDate": "2026/02/20",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
-    "askingPrice": 11,
+    "askingPrice": 11.2,
     "building": "802",
     "floor": "14",
     "size": 59,
     "note": "- 화장실, 싱크대",
-    "moveInDate": "2026-05"
+    "moveInDate": "2026-05",
+    "priceHistory": [
+      {
+        "date": "2026-02-20",
+        "price": 11
+      },
+      {
+        "date": "2026-02-22",
+        "price": 11
+      }
+    ]
   },
   {
     "regDate": "2026/01/17",
@@ -372,7 +384,8 @@
     "floor": "1",
     "size": 59,
     "note": "- 씽크대, 신발장수리\n- 비확장",
-    "moveInDate": "2026-04"
+    "moveInDate": "2026-04",
+    "isInProgress": true
   },
   {
     "regDate": "2026/01/17",
