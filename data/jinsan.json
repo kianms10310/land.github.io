@@ -8,7 +8,8 @@
     "building": "111",
     "floor": "5",
     "size": 59,
-    "note": "• 26/09 입주\n• 샷시포함 올수리"
+    "note": "• 샷시포함 올수리",
+    "moveInDate": "2026-09"
   },
   {
     "regDate": "2026/02/20",
@@ -52,7 +53,8 @@
     "building": "113",
     "floor": "5",
     "size": 59,
-    "note": "• 26/11/23 입주"
+    "note": "",
+    "moveInDate": "2026-11"
   },
   {
     "regDate": "2026/02/12",
@@ -63,7 +65,8 @@
     "building": "112",
     "floor": "11",
     "size": 59,
-    "note": "- 26/08 입주"
+    "note": "",
+    "moveInDate": "2026-08"
   },
   {
     "regDate": "2026/02/11",
@@ -85,7 +88,14 @@
     "building": "112",
     "floor": "고",
     "size": 59,
-    "note": "- 26/02/12 8.1 → 8\n- 26/06/25 입주"
+    "note": "",
+    "moveInDate": "2026-06",
+    "priceHistory": [
+      {
+        "date": "2026-02-12",
+        "price": 8.1
+      }
+    ]
   },
   {
     "regDate": "2026/02/09",
@@ -96,7 +106,8 @@
     "building": "114",
     "floor": "15",
     "size": 59,
-    "note": "- 샷시포함 올수리"
+    "note": "- 샷시포함 올수리",
+    "isInProgress": true
   },
   {
     "regDate": "2026/02/07",
@@ -118,7 +129,8 @@
     "building": "112",
     "floor": "15",
     "size": 59,
-    "note": ""
+    "note": "",
+    "isInProgress": true
   },
   {
     "regDate": "2026/02/03",
