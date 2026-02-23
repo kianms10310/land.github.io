@@ -1,5 +1,33 @@
 [
   {
+    "regDate": "2026-02-21",
+    "contractDate": "",
+    "moveInDate": "",
+    "actualPrice": null,
+    "askingPrice": 9,
+    "building": "107",
+    "floor": "10",
+    "size": 84,
+    "note": "- 올수리\n- 방, 거실 확장",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
+    "regDate": "2026-02-21",
+    "contractDate": "",
+    "moveInDate": "2026-11",
+    "actualPrice": null,
+    "askingPrice": 9.2,
+    "building": "105",
+    "floor": "19",
+    "size": 84,
+    "note": "- 샷시포함올수리",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
     "regDate": "2026/02/20",
     "contractDate": "",
     "status": "시작 전",
@@ -67,17 +95,6 @@
     "size": 59,
     "note": "",
     "moveInDate": "2026-08"
-  },
-  {
-    "regDate": "2026/02/11",
-    "contractDate": "",
-    "status": "시작 전",
-    "actualPrice": null,
-    "askingPrice": 9,
-    "building": "107",
-    "floor": "10",
-    "size": 84,
-    "note": "- 방,거실 확장 올수리"
   },
   {
     "regDate": "2026/02/11",
