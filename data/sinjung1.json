@@ -1,5 +1,19 @@
 [
   {
+    "regDate": "2026-02-23",
+    "contractDate": "",
+    "moveInDate": "",
+    "actualPrice": null,
+    "askingPrice": 11,
+    "building": "302",
+    "floor": "고",
+    "size": 59,
+    "note": "- 수리된집",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
     "regDate": "2026/02/20",
     "contractDate": "",
     "status": "시작 전",
