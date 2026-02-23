@@ -1,5 +1,19 @@
 [
   {
+    "regDate": "2026-02-23",
+    "contractDate": "",
+    "moveInDate": "2026-06",
+    "actualPrice": null,
+    "askingPrice": 11.9,
+    "building": "705",
+    "floor": "19",
+    "size": 59,
+    "note": "- 샷시포함특올수리",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
     "regDate": "2026-02-20",
     "contractDate": "",
     "status": "시작 전",
