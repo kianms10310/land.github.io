@@ -1,5 +1,33 @@
 [
   {
+    "regDate": "2026-02-23",
+    "contractDate": "",
+    "moveInDate": "",
+    "actualPrice": null,
+    "askingPrice": 10.2,
+    "building": "106",
+    "floor": "고",
+    "size": 84,
+    "note": "- 샷시제외올수리",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
+    "regDate": "2026-02-23",
+    "contractDate": "",
+    "moveInDate": "2026-05",
+    "actualPrice": null,
+    "askingPrice": 9,
+    "building": "107",
+    "floor": "저",
+    "size": 84,
+    "note": "",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
     "regDate": "2026/02/19",
     "contractDate": "",
     "status": "시작 전",
