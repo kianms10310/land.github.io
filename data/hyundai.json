@@ -237,18 +237,6 @@
     "note": ""
   },
   {
-    "regDate": "2026/01/16",
-    "contractDate": "",
-    "status": "진행 중",
-    "actualPrice": null,
-    "askingPrice": 10.4,
-    "building": "204",
-    "floor": "고",
-    "size": 84,
-    "note": "- 전체 올수리\n- 즉시입주",
-    "isInProgress": true
-  },
-  {
     "regDate": "2026/01/03",
     "contractDate": "",
     "status": "진행 중",
@@ -258,18 +246,6 @@
     "floor": "중",
     "size": 84,
     "note": "- 샷시 제외 올수리\n- 즉시입주",
-    "isInProgress": true
-  },
-  {
-    "regDate": "2025/12/30",
-    "contractDate": "",
-    "status": "진행 중",
-    "actualPrice": null,
-    "askingPrice": 10.3,
-    "building": "204",
-    "floor": "중",
-    "size": 84,
-    "note": "- 즉시입주",
     "isInProgress": true
   },
   {
