@@ -49,7 +49,8 @@
     "floor": "고",
     "size": 84,
     "note": "• 샷시제외 올수리",
-    "isLocked": false
+    "isLocked": false,
+    "isInProgress": true
   },
   {
     "regDate": "2026/02/24",
