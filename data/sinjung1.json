@@ -1,14 +1,28 @@
 [
   {
-    "regDate": "2026-02-23",
+    "regDate": "2026-02-24",
     "contractDate": "",
     "moveInDate": "",
     "actualPrice": null,
-    "askingPrice": 11,
-    "building": "302",
-    "floor": "고",
+    "askingPrice": 11.8,
+    "building": "108",
+    "floor": "중",
     "size": 59,
-    "note": "- 수리된집",
+    "note": "- 화이트톤 올수리",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
+    "regDate": "2026-02-24",
+    "contractDate": "",
+    "moveInDate": "2026-07",
+    "actualPrice": null,
+    "askingPrice": 11.8,
+    "building": "105",
+    "floor": "중",
+    "size": 59,
+    "note": "- 방, 거실확장\n- 샷시교체",
     "isLocked": false,
     "isInProgress": false,
     "priceHistory": []
