@@ -1,5 +1,19 @@
 [
   {
+    "regDate": "2026-02-24",
+    "contractDate": "",
+    "moveInDate": "2026-09",
+    "actualPrice": null,
+    "askingPrice": 11.3,
+    "building": "805",
+    "floor": "17",
+    "size": 59,
+    "note": "- 방1확장\n- 화장실싱크도배",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
     "regDate": "2026-02-23",
     "contractDate": "",
     "moveInDate": "",
