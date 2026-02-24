@@ -187,7 +187,8 @@
     "building": "107",
     "floor": "13",
     "size": 59,
-    "note": "- 리모델링 된 집\n- 예전 올수리"
+    "note": "- 리모델링 된 집\n- 예전 올수리",
+    "isInProgress": true
   },
   {
     "regDate": "2026/02/07",
@@ -219,7 +220,8 @@
         "date": "2026-02-07",
         "price": 11.7
       }
-    ]
+    ],
+    "isInProgress": false
   },
   {
     "regDate": "2026/02/03",
