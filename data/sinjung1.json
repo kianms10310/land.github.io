@@ -11,7 +11,12 @@
     "note": "- 올수리 방확장",
     "isLocked": false,
     "isInProgress": false,
-    "priceHistory": []
+    "priceHistory": [
+      {
+        "date": "2026-02-04",
+        "price": 12.1
+      }
+    ]
   },
   {
     "regDate": "2026-02-24",
@@ -200,17 +205,6 @@
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
-    "askingPrice": 12.1,
-    "building": "108",
-    "floor": "고",
-    "size": 59,
-    "note": "- 올수리\n- 방확장"
-  },
-  {
-    "regDate": "2026/02/04",
-    "contractDate": "",
-    "status": "시작 전",
-    "actualPrice": null,
     "askingPrice": 11.5,
     "building": "110",
     "floor": "3",
@@ -307,7 +301,8 @@
     "building": "109",
     "floor": "고",
     "size": 59,
-    "note": ""
+    "note": "",
+    "isInProgress": true
   },
   {
     "regDate": "2026/01/09",
