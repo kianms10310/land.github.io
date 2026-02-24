@@ -14,7 +14,7 @@
     "priceHistory": []
   },
   {
-    "regDate": "2026/02/21",
+    "regDate": "2026/02/24",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -70,7 +70,7 @@
     "moveInDate": "2026-05"
   },
   {
-    "regDate": "2026/02/20",
+    "regDate": "2026/02/24",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -246,15 +246,21 @@
     "moveInDate": "2026-03"
   },
   {
-    "regDate": "2026/02/10",
+    "regDate": "2026/02/24",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
-    "askingPrice": 11,
+    "askingPrice": 10.7,
     "building": "802",
     "floor": "3",
     "size": 59,
-    "note": "- 씽크대, 화장실 부분수리"
+    "note": "- 씽크대, 화장실 부분수리",
+    "priceHistory": [
+      {
+        "date": "2026-02-24",
+        "price": 11
+      }
+    ]
   },
   {
     "regDate": "2026/02/10",
