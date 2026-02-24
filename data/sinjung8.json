@@ -1,5 +1,19 @@
 [
   {
+    "regDate": "2026-02-23",
+    "contractDate": "",
+    "moveInDate": "",
+    "actualPrice": null,
+    "askingPrice": 12,
+    "building": "808",
+    "floor": "고",
+    "size": 59,
+    "note": "- 방2 확장\n- 올수리",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
     "regDate": "2026/02/21",
     "contractDate": "",
     "status": "시작 전",
@@ -13,7 +27,7 @@
     "moveInDate": "2027-05"
   },
   {
-    "regDate": "2026/02/21",
+    "regDate": "2026/02/23",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -92,7 +106,7 @@
     "moveInDate": "2026-05"
   },
   {
-    "regDate": "2026/02/21",
+    "regDate": "2026/02/24",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
