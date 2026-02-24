@@ -1,5 +1,19 @@
 [
   {
+    "regDate": "2026-02-24",
+    "contractDate": "",
+    "moveInDate": "",
+    "actualPrice": null,
+    "askingPrice": 10.5,
+    "building": "201",
+    "floor": "18",
+    "size": 84,
+    "note": "- 올수리\n - 화이트 수리\n-  샷시제외올수리",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
     "regDate": "2026-02-19",
     "contractDate": "",
     "moveInDate": "2027-05",
@@ -38,7 +52,7 @@
     "isLocked": false
   },
   {
-    "regDate": "2026/02/20",
+    "regDate": "2026/02/24",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -145,7 +159,7 @@
     "note": "- 폴딩도어\n- 샷시외 올수리"
   },
   {
-    "regDate": "2026/02/19",
+    "regDate": "2026/02/24",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -168,7 +182,7 @@
     "moveInDate": "2027-07"
   },
   {
-    "regDate": "2026/02/21",
+    "regDate": "2026/02/24",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -218,7 +232,8 @@
     "floor": "5",
     "size": 84,
     "note": "- 샷시제외 올수리\n- 화이트 올수리",
-    "isLocked": false
+    "isLocked": false,
+    "isInProgress": true
   },
   {
     "regDate": "2026/02/11",
