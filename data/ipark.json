@@ -11,17 +11,27 @@
     "note": "- 입구동\n- 폴딩도어"
   },
   {
-    "regDate": "2026/02/20",
+    "regDate": "2026/02/21",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
-    "askingPrice": 9.3,
+    "askingPrice": 9.5,
     "building": "1001",
     "floor": "고",
     "size": 59,
     "note": "• 올수리",
     "isLocked": false,
-    "moveInDate": "2027-03"
+    "moveInDate": "2027-03",
+    "priceHistory": [
+      {
+        "date": "2026-02-20",
+        "price": 9.3
+      },
+      {
+        "date": "2026-02-24",
+        "price": 9.3
+      }
+    ]
   },
   {
     "regDate": "2026/02/21",
@@ -46,13 +56,13 @@
     "note": "- 올수리"
   },
   {
-    "regDate": "2026/02/21",
+    "regDate": "2026/02/24",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
     "askingPrice": 10.1,
     "building": "1010",
-    "floor": "고",
+    "floor": "13",
     "size": 59,
     "note": "• 특올수리",
     "isLocked": false
