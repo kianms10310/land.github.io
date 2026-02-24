@@ -48,7 +48,7 @@
     "moveInDate": "2027-05"
   },
   {
-    "regDate": "2026-02-20",
+    "regDate": "2026-02-24",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -56,7 +56,7 @@
     "building": "705",
     "floor": "2",
     "size": 59,
-    "note": "",
+    "note": "- 2년전 올수리",
     "isLocked": false,
     "isInProgress": false,
     "priceHistory": [
