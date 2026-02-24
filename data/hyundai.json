@@ -1,6 +1,6 @@
 [
   {
-    "regDate": "2026-02-19",
+    "regDate": "2026-02-24",
     "contractDate": "",
     "moveInDate": "2027-05",
     "actualPrice": null,
@@ -14,7 +14,7 @@
     "priceHistory": []
   },
   {
-    "regDate": "2026-02-21",
+    "regDate": "2026-02-24",
     "contractDate": "",
     "actualPrice": null,
     "askingPrice": 10.3,
@@ -38,7 +38,7 @@
     "isLocked": false
   },
   {
-    "regDate": "2026/02/20",
+    "regDate": "2026/02/24",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -71,7 +71,8 @@
     "building": "201",
     "floor": "중",
     "size": 84,
-    "note": "- 씽크대교체\n- 화장실교체"
+    "note": "- 씽크대교체\n- 화장실교체",
+    "isInProgress": true
   },
   {
     "regDate": "2026/02/21",
@@ -98,13 +99,13 @@
     "isLocked": false
   },
   {
-    "regDate": "2026/02/23",
+    "regDate": "2026/02/24",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
     "askingPrice": 10.5,
     "building": "201",
-    "floor": "고",
+    "floor": "18",
     "size": 84,
     "note": "• 샷시제외 올수리",
     "isLocked": false,
@@ -142,7 +143,8 @@
     "building": "201",
     "floor": "중",
     "size": 84,
-    "note": "- 폴딩도어\n- 샷시외 올수리"
+    "note": "- 폴딩도어\n- 샷시외 올수리",
+    "isInProgress": true
   },
   {
     "regDate": "2026/02/19",
@@ -168,7 +170,7 @@
     "moveInDate": "2027-07"
   },
   {
-    "regDate": "2026/02/21",
+    "regDate": "2026/02/24",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -189,24 +191,8 @@
     "size": 84,
     "note": "- 씽크대화장실 화이트 수리\n- 방1확장",
     "isLocked": false,
-    "moveInDate": "2026-05"
-  },
-  {
-    "regDate": "2026/02/21",
-    "contractDate": "",
-    "status": "시작 전",
-    "actualPrice": null,
-    "askingPrice": 10.2,
-    "building": "205",
-    "floor": "고",
-    "size": 84,
-    "note": "- 일부수리",
-    "priceHistory": [
-      {
-        "date": "2025-02-21",
-        "price": 10.3
-      }
-    ]
+    "moveInDate": "2026-05",
+    "isInProgress": true
   },
   {
     "regDate": "2026/02/21",
