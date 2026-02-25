@@ -101,16 +101,22 @@
     "isLocked": false
   },
   {
-    "regDate": "2026/02/45",
+    "regDate": "2026/02/25",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
-    "askingPrice": 10,
+    "askingPrice": 9.5,
     "building": "206",
     "floor": "고",
     "size": 59,
     "note": "• 샷시제외 올수리",
-    "isLocked": false
+    "isLocked": false,
+    "priceHistory": [
+      {
+        "date": "2026-02-25",
+        "price": 10
+      }
+    ]
   },
   {
     "regDate": "2026/02/24",
