@@ -76,7 +76,7 @@
     "moveInDate": "2027-02"
   },
   {
-    "regDate": "2026/02/14",
+    "regDate": "2026/02/26",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -84,7 +84,7 @@
     "building": "508",
     "floor": "7",
     "size": 59,
-    "note": "",
+    "note": "- 확장",
     "priceHistory": [
       {
         "date": "2025-02-14",
