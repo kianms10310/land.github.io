@@ -103,7 +103,7 @@
     "note": "- 씽크대교체\n- 화장실교체"
   },
   {
-    "regDate": "2026/02/24",
+    "regDate": "2026/02/26",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -133,7 +133,7 @@
     ]
   },
   {
-    "regDate": "2026/02/24",
+    "regDate": "2026/02/26",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -144,7 +144,7 @@
     "note": "- 즉시입주"
   },
   {
-    "regDate": "2026/02/25",
+    "regDate": "2026/02/26",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -179,7 +179,7 @@
     "note": "- 화이트특리모델링\n- 올확장"
   },
   {
-    "regDate": "2026/02/24",
+    "regDate": "2026/02/26",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -246,15 +246,15 @@
     "isInProgress": true
   },
   {
-    "regDate": "2026/02/11",
+    "regDate": "2026/02/26",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
     "askingPrice": 10,
     "building": "204",
-    "floor": "고",
+    "floor": "19",
     "size": 59,
-    "note": ""
+    "note": "- 올수리"
   },
   {
     "regDate": "2026/01/03",
