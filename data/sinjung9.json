@@ -1,5 +1,33 @@
 [
   {
+    "regDate": "2026-02-21",
+    "contractDate": "",
+    "moveInDate": "2027-03",
+    "actualPrice": null,
+    "askingPrice": 9,
+    "building": "901",
+    "floor": "저",
+    "size": 49,
+    "note": "",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
+    "regDate": "2026-02-21",
+    "contractDate": "",
+    "moveInDate": "",
+    "actualPrice": null,
+    "askingPrice": 10.4,
+    "building": "901",
+    "floor": "11",
+    "size": 49,
+    "note": "- 올수리",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
     "regDate": "2026-02-24",
     "contractDate": "",
     "moveInDate": "",
