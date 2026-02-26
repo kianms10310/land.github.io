@@ -4,14 +4,19 @@
     "contractDate": "",
     "moveInDate": "2026-11",
     "actualPrice": null,
-    "askingPrice": 10.5,
+    "askingPrice": 10.3,
     "building": "1007",
-    "floor": "고",
+    "floor": "15",
     "size": 84,
     "note": "- 올수리샷시제외",
     "isLocked": false,
     "isInProgress": false,
-    "priceHistory": []
+    "priceHistory": [
+      {
+        "date": "2026-02-26",
+        "price": 10.5
+      }
+    ]
   },
   {
     "regDate": "2026/02/20",
