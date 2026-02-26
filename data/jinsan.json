@@ -62,7 +62,8 @@
     "building": "113",
     "floor": "11",
     "size": 59,
-    "note": "• 샷시포함 올수리"
+    "note": "• 샷시포함 올수리",
+    "isInProgress": true
   },
   {
     "regDate": "2026/02/14",
@@ -87,16 +88,22 @@
     "note": "- 27/07/31 입주"
   },
   {
-    "regDate": "2026/02/13",
+    "regDate": "2026/02/26",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
-    "askingPrice": 7.7,
+    "askingPrice": 8,
     "building": "113",
     "floor": "5",
     "size": 59,
     "note": "",
-    "moveInDate": "2026-11"
+    "moveInDate": "2026-11",
+    "priceHistory": [
+      {
+        "date": "2026-02-26",
+        "price": 7.7
+      }
+    ]
   },
   {
     "regDate": "2026/02/12",
