@@ -1,5 +1,19 @@
 [
   {
+    "regDate": "2026-02-27",
+    "contractDate": "",
+    "moveInDate": "",
+    "actualPrice": null,
+    "askingPrice": 10.5,
+    "building": "901",
+    "floor": "고",
+    "size": 49,
+    "note": "- 전체샷시포함특올수리 ",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
     "regDate": "2026-02-21",
     "contractDate": "",
     "moveInDate": "2027-03",
