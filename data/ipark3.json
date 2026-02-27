@@ -1,6 +1,20 @@
 [
   {
-    "regDate": "2026/02/26",
+    "regDate": "2026-02-27",
+    "contractDate": "",
+    "moveInDate": "",
+    "actualPrice": null,
+    "askingPrice": 12,
+    "building": "301",
+    "floor": "5",
+    "size": 84,
+    "note": "",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
+    "regDate": "2026/02/27",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
