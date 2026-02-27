@@ -1,5 +1,19 @@
 [
   {
+    "regDate": "2026-02-27",
+    "contractDate": "",
+    "moveInDate": "",
+    "actualPrice": null,
+    "askingPrice": 11.2,
+    "building": "805",
+    "floor": "12",
+    "size": 59,
+    "note": "- 올수리\n- 내부샷시 교체",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
     "regDate": "2026-02-26",
     "contractDate": "",
     "moveInDate": "2026-06",
