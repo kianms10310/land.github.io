@@ -108,7 +108,7 @@
     "moveInDate": "2026-05"
   },
   {
-    "regDate": "2026/02/24",
+    "regDate": "2026/02/27",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -125,12 +125,16 @@
       {
         "date": "2026-02-24",
         "price": 11.4
+      },
+      {
+        "date": "2026-02-26",
+        "price": 11.5
       }
     ],
     "moveInDate": "2026-05"
   },
   {
-    "regDate": "2026/02/24",
+    "regDate": "2026/02/27",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
