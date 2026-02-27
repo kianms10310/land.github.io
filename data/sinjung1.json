@@ -324,12 +324,12 @@
   },
   {
     "regDate": "2026/01/15",
-    "contractDate": "",
+    "contractDate": "2026/02/13",
     "status": "진행 중",
-    "actualPrice": null,
+    "actualPrice": 11.2,
     "askingPrice": 11.1,
     "building": "104",
-    "floor": "중",
+    "floor": "11",
     "size": 59,
     "note": "",
     "isInProgress": true
