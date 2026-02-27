@@ -2,6 +2,20 @@
   {
     "regDate": "2026-02-27",
     "contractDate": "",
+    "moveInDate": "2027-08",
+    "actualPrice": null,
+    "askingPrice": 9.9,
+    "building": "908",
+    "floor": "고",
+    "size": 49,
+    "note": "",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
+    "regDate": "2026-02-27",
+    "contractDate": "",
     "moveInDate": "",
     "actualPrice": null,
     "askingPrice": 10.5,
