@@ -163,16 +163,30 @@
     "moveInDate": "2026-09"
   },
   {
-    "regDate": "2026/02/11",
+    "regDate": "2026/02/28",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
-    "askingPrice": 10.4,
+    "askingPrice": 10,
     "building": "908",
     "floor": "고",
     "size": 49,
     "note": "",
-    "moveInDate": "2026-10"
+    "moveInDate": "2026-10",
+    "priceHistory": [
+      {
+        "date": "2026-02-11",
+        "price": 10.4
+      },
+      {
+        "date": "2026-02-26",
+        "price": 10
+      },
+      {
+        "date": "2026-02-28",
+        "price": 10.4
+      }
+    ]
   },
   {
     "regDate": "2026/02/11",
