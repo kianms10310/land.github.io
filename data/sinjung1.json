@@ -347,12 +347,12 @@
   },
   {
     "regDate": "2026/01/13",
-    "contractDate": "",
+    "contractDate": "2026/01/07",
     "status": "진행 중",
-    "actualPrice": null,
+    "actualPrice": 11,
     "askingPrice": 11,
     "building": "109",
-    "floor": "고",
+    "floor": "16",
     "size": 59,
     "note": "",
     "isInProgress": true
