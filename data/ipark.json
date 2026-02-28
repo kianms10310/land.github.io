@@ -34,7 +34,7 @@
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
-    "askingPrice": 9.5,
+    "askingPrice": 9.7,
     "building": "1001",
     "floor": "고",
     "size": 59,
@@ -47,8 +47,12 @@
         "price": 9.3
       },
       {
-        "date": "2026-02-24",
-        "price": 9.3
+        "date": "2026-02-26",
+        "price": 9.5
+      },
+      {
+        "date": "2026-02-28",
+        "price": 9.51
       }
     ]
   },
