@@ -1,5 +1,33 @@
 [
   {
+    "regDate": "2026-02-28",
+    "contractDate": "",
+    "moveInDate": "2026-05",
+    "actualPrice": null,
+    "askingPrice": 11,
+    "building": "805",
+    "floor": "18",
+    "size": 59,
+    "note": "- 방1확장",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
+    "regDate": "2026-02-28",
+    "contractDate": "",
+    "moveInDate": "2026-05",
+    "actualPrice": null,
+    "askingPrice": 10,
+    "building": "810",
+    "floor": "1",
+    "size": 59,
+    "note": "- 방2, 거실확장",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
     "regDate": "2026-02-27",
     "contractDate": "",
     "moveInDate": "",
@@ -310,7 +338,7 @@
     "moveInDate": "2026-03"
   },
   {
-    "regDate": "2026/02/27",
+    "regDate": "2026/02/28",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
