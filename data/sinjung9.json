@@ -1,5 +1,24 @@
 [
   {
+    "regDate": "2026-02-28",
+    "contractDate": "",
+    "moveInDate": "",
+    "actualPrice": null,
+    "askingPrice": 11.7,
+    "building": "902",
+    "floor": "7",
+    "size": 59,
+    "note": "",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": [
+      {
+        "date": "2026-02-12",
+        "price": 10.8
+      }
+    ]
+  },
+  {
     "regDate": "2026-02-27",
     "contractDate": "",
     "moveInDate": "2027-08",
@@ -276,18 +295,6 @@
     "floor": "15",
     "size": 59,
     "note": "- 올수리"
-  },
-  {
-    "regDate": "2026/02/12",
-    "contractDate": "",
-    "status": "진행 중",
-    "actualPrice": null,
-    "askingPrice": 10.8,
-    "building": "902",
-    "floor": "7",
-    "size": 59,
-    "note": "- 급매\n- 예전올수리",
-    "isInProgress": true
   },
   {
     "regDate": "2026/02/10",
