@@ -25,8 +25,7 @@
     "note": "",
     "isLocked": false,
     "isInProgress": false,
-    "priceHistory": [
-    ]
+    "priceHistory": []
   },
   {
     "regDate": "2026-02-25",
@@ -86,7 +85,7 @@
     "size": 59,
     "note": "- 방, 거실확장\n- 샷시교체",
     "isLocked": false,
-    "isInProgress": false,
+    "isInProgress": true,
     "priceHistory": []
   },
   {
@@ -99,7 +98,8 @@
     "floor": "12",
     "size": 59,
     "note": "",
-    "moveInDate": "2026-04"
+    "moveInDate": "2026-04",
+    "isInProgress": true
   },
   {
     "regDate": "2026/02/21",
@@ -142,7 +142,8 @@
     "floor": "중",
     "size": 59,
     "note": "",
-    "moveInDate": "2027-10"
+    "moveInDate": "2027-10",
+    "isInProgress": false
   },
   {
     "regDate": "2026/02/12",
@@ -219,7 +220,8 @@
     "building": "102",
     "floor": "중",
     "size": 59,
-    "note": "- 샷시제외 올수리"
+    "note": "- 샷시제외 올수리",
+    "isInProgress": true
   },
   {
     "regDate": "2026/02/07",
@@ -268,7 +270,7 @@
         "price": 11.5
       }
     ],
-    "isInProgress": false
+    "isInProgress": true
   },
   {
     "regDate": "2026/02/03",
