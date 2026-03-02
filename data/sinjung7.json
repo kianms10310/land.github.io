@@ -108,7 +108,7 @@
     "size": 59,
     "note": "- 비확장\n- 샷시포함올수리",
     "isLocked": false,
-    "isInProgress": false,
+    "isInProgress": true,
     "priceHistory": [
       {
         "date": "2026-02-20",
