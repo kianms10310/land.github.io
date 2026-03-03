@@ -4,6 +4,67 @@
     "contractDate": "",
     "moveInDate": "2026-07",
     "actualPrice": null,
+    "askingPrice": 10.9,
+    "building": "812",
+    "floor": "17",
+    "size": 59,
+    "note": "- 방2개 확장\n- 샷시제외 올수리",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
+    "regDate": "2026-03-03",
+    "contractDate": "",
+    "moveInDate": "2026-07",
+    "actualPrice": null,
+    "askingPrice": 10.5,
+    "building": "809",
+    "floor": "20",
+    "size": 59,
+    "note": "- 방1확장",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
+    "regDate": "2026-03-03",
+    "contractDate": "",
+    "moveInDate": "2027-07",
+    "actualPrice": null,
+    "askingPrice": 10.5,
+    "building": "801",
+    "floor": "13",
+    "size": 59,
+    "note": "-  방1확장",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
+    "regDate": "2026-03-03",
+    "contractDate": "",
+    "moveInDate": "",
+    "actualPrice": null,
+    "askingPrice": 11.6,
+    "building": "812",
+    "floor": "14",
+    "size": 59,
+    "note": "- 방1 확장\n- 연그레이톤 ",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": [
+      {
+        "date": "2026-03-03",
+        "price": 0.01
+      }
+    ]
+  },
+  {
+    "regDate": "2026-03-03",
+    "contractDate": "",
+    "moveInDate": "2026-07",
+    "actualPrice": null,
     "askingPrice": 11.2,
     "building": "803",
     "floor": "8",
@@ -152,7 +213,7 @@
     "moveInDate": "2026-10"
   },
   {
-    "regDate": "2026/02/24",
+    "regDate": "2026-03-03",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -366,7 +427,7 @@
     "moveInDate": "2026-03"
   },
   {
-    "regDate": "2026/03/02",
+    "regDate": "2026-03-03",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -436,7 +497,7 @@
     "moveInDate": "2026-06"
   },
   {
-    "regDate": "2026/02/06",
+    "regDate": "2026-03-03",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
