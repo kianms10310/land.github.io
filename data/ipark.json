@@ -1,6 +1,20 @@
 [
   {
-    "regDate": "2026-02-28",
+    "regDate": "2026-03-03",
+    "contractDate": "",
+    "moveInDate": "",
+    "actualPrice": null,
+    "askingPrice": 10.5,
+    "building": "1005",
+    "floor": "고",
+    "size": 84,
+    "note": "- 세안고",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
+    "regDate": "2026-03-03",
     "contractDate": "",
     "moveInDate": "2026-11",
     "actualPrice": null,
@@ -68,7 +82,7 @@
     "note": ""
   },
   {
-    "regDate": "2026/02/28",
+    "regDate": "2026-03-03",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -91,7 +105,7 @@
     "isLocked": false
   },
   {
-    "regDate": "2026/02/27",
+    "regDate": "2026-03-03",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
