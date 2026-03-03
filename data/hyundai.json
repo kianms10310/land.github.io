@@ -1,6 +1,20 @@
 [
   {
-    "regDate": "2026-02-27",
+    "regDate": "2026-03-03",
+    "contractDate": "",
+    "moveInDate": "",
+    "actualPrice": null,
+    "askingPrice": 10.7,
+    "building": "205",
+    "floor": "7",
+    "size": 84,
+    "note": "",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
+    "regDate": "2026-03-03",
     "contractDate": "",
     "moveInDate": "",
     "actualPrice": null,
@@ -28,7 +42,7 @@
     "priceHistory": []
   },
   {
-    "regDate": "2026-02-27",
+    "regDate": "2026-03-03",
     "contractDate": "",
     "moveInDate": "2026-07",
     "actualPrice": null,
@@ -205,7 +219,7 @@
     "moveInDate": "2027-07"
   },
   {
-    "regDate": "2026/02/28",
+    "regDate": "2026-03-03",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
