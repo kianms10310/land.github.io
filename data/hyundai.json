@@ -56,7 +56,7 @@
     "priceHistory": []
   },
   {
-    "regDate": "2026-02-26",
+    "regDate": "2026-03-03",
     "contractDate": "",
     "moveInDate": "2027-05",
     "actualPrice": null,
@@ -70,7 +70,7 @@
     "priceHistory": []
   },
   {
-    "regDate": "2026-02-26",
+    "regDate": "2026-03-03",
     "contractDate": "",
     "actualPrice": null,
     "askingPrice": 10.3,
@@ -95,7 +95,7 @@
     "isInProgress": true
   },
   {
-    "regDate": "2026/02/26",
+    "regDate": "2026-03-03",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -120,7 +120,7 @@
     "moveInDate": "2027-10"
   },
   {
-    "regDate": "2026/02/20",
+    "regDate": "2026-03-03",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -161,7 +161,7 @@
     ]
   },
   {
-    "regDate": "2026/02/26",
+    "regDate": "2026-03-03",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -196,7 +196,7 @@
     "isInProgress": true
   },
   {
-    "regDate": "2026/02/24",
+    "regDate": "2026-03-03",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -244,7 +244,7 @@
     "isInProgress": true
   },
   {
-    "regDate": "2026/02/26",
+    "regDate": "2026-03-03",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
