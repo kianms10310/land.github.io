@@ -1,5 +1,19 @@
 [
   {
+    "regDate": "2026-03-04",
+    "contractDate": "",
+    "moveInDate": "",
+    "actualPrice": null,
+    "askingPrice": 10,
+    "building": "1010",
+    "floor": "13",
+    "size": 59,
+    "note": "- 샷시포함 특올수리 확트인전망 방1확장",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
     "regDate": "2026-03-03",
     "contractDate": "",
     "moveInDate": "",
@@ -93,7 +107,7 @@
     "note": "- 올수리"
   },
   {
-    "regDate": "2026-03-03",
+    "regDate": "2026-03-04",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -101,7 +115,7 @@
     "building": "1010",
     "floor": "13",
     "size": 59,
-    "note": "• 특올수리",
+    "note": "• 특올수리 올확장 ",
     "isLocked": false
   },
   {
