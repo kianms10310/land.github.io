@@ -1,5 +1,19 @@
 [
   {
+    "regDate": "2026-03-04",
+    "contractDate": "",
+    "moveInDate": "2026-05",
+    "actualPrice": null,
+    "askingPrice": 10.5,
+    "building": "302",
+    "floor": "10",
+    "size": 84,
+    "note": "- 샷시제외 올수리",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
     "regDate": "2026/03/03",
     "contractDate": "",
     "moveInDate": "",
