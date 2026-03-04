@@ -1,5 +1,70 @@
 [
   {
+    "regDate": "2026-03-04",
+    "contractDate": "",
+    "moveInDate": "2026-09",
+    "actualPrice": null,
+    "askingPrice": 12,
+    "building": "111",
+    "floor": "고",
+    "size": 59,
+    "note": "- 올수리",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
+    "regDate": "2026-03-04",
+    "contractDate": "",
+    "moveInDate": "2027-11",
+    "actualPrice": null,
+    "askingPrice": 11.8,
+    "building": "104",
+    "floor": "중",
+    "size": 59,
+    "note": "- 올수리 로얄동로얄층",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
+    "regDate": "2026-03-04",
+    "contractDate": "",
+    "moveInDate": "2028-01",
+    "actualPrice": null,
+    "askingPrice": 11,
+    "building": "102",
+    "floor": "고",
+    "size": 59,
+    "note": "",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
+    "regDate": "2026-03-04",
+    "contractDate": "",
+    "moveInDate": "",
+    "actualPrice": null,
+    "askingPrice": 10.9,
+    "building": "103",
+    "floor": "2",
+    "size": 59,
+    "note": "- 샷시포함 주인급특올수리 화이트톤",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": [
+      {
+        "date": "2026-03-03",
+        "price": 11.2
+      },
+      {
+        "date": "2026-03-04",
+        "price": 11.2
+      }
+    ]
+  },
+  {
     "regDate": "2026-02-27",
     "contractDate": "",
     "moveInDate": "",
@@ -102,7 +167,7 @@
     "isInProgress": true
   },
   {
-    "regDate": "2026/02/21",
+    "regDate": "2026/03/03",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -133,7 +198,7 @@
     "moveInDate": "2027-07"
   },
   {
-    "regDate": "2026/02/14",
+    "regDate": "2026/03/04",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -141,7 +206,7 @@
     "building": "110",
     "floor": "중",
     "size": 59,
-    "note": "",
+    "note": "- 월세안고 올수리 중문설치 로얄동로얄층 전망굿",
     "moveInDate": "2027-10",
     "isInProgress": false
   },
@@ -195,7 +260,7 @@
     "moveInDate": "2026-05"
   },
   {
-    "regDate": "2026/02/11",
+    "regDate": "2026/03/03",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
