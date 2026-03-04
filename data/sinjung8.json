@@ -1,6 +1,6 @@
 [
   {
-    "regDate": "2026-03-03",
+    "regDate": "2026-03-04",
     "contractDate": "",
     "moveInDate": "2026-07",
     "actualPrice": null,
@@ -89,7 +89,7 @@
     "priceHistory": []
   },
   {
-    "regDate": "2026-02-28",
+    "regDate": "2026-03-04",
     "contractDate": "",
     "moveInDate": "2026-05",
     "actualPrice": null,
@@ -131,7 +131,7 @@
     "priceHistory": []
   },
   {
-    "regDate": "2026-02-26",
+    "regDate": "2026-03-04",
     "contractDate": "",
     "moveInDate": "2026-06",
     "actualPrice": null,
@@ -159,7 +159,7 @@
     "priceHistory": []
   },
   {
-    "regDate": "2026-02-24",
+    "regDate": "2026-03-04",
     "contractDate": "",
     "moveInDate": "2026-09",
     "actualPrice": null,
@@ -334,11 +334,11 @@
     "moveInDate": "2027-07"
   },
   {
-    "regDate": "2026-03-03",
+    "regDate": "2026-03-04",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
-    "askingPrice": 10.2,
+    "askingPrice": 10,
     "building": "812",
     "floor": "1",
     "size": 59,
@@ -352,6 +352,10 @@
       {
         "date": "2025-02-19",
         "price": 10.4
+      },
+      {
+        "date": "2026-03-04",
+        "price": 10.2
       }
     ]
   },
@@ -508,7 +512,7 @@
     "note": ""
   },
   {
-    "regDate": "2026/02/05",
+    "regDate": "2026/03/04",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
