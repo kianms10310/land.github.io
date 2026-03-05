@@ -28,7 +28,7 @@
     "priceHistory": []
   },
   {
-    "regDate": "2026-03-03",
+    "regDate": "2026-03-05",
     "contractDate": "",
     "moveInDate": "2026-11",
     "actualPrice": null,
@@ -96,7 +96,7 @@
     "note": ""
   },
   {
-    "regDate": "2026-03-03",
+    "regDate": "2026-03-05",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
@@ -119,7 +119,7 @@
     "isLocked": false
   },
   {
-    "regDate": "2026-03-03",
+    "regDate": "2026-03-05",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
