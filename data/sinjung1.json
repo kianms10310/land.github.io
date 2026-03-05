@@ -1,5 +1,19 @@
 [
   {
+    "regDate": "2026-03-05",
+    "contractDate": "",
+    "moveInDate": "",
+    "actualPrice": null,
+    "askingPrice": 12.8,
+    "building": "111",
+    "floor": "6",
+    "size": 59,
+    "note": "- 샷시,확장,화이트톤특올수리,시스템에어컨",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
     "regDate": "2026-01-31",
     "contractDate": "2026/02/21",
     "moveInDate": "",
