@@ -1,5 +1,19 @@
 [
   {
+    "regDate": "2026-03-05",
+    "contractDate": "",
+    "moveInDate": "2026-11",
+    "actualPrice": null,
+    "askingPrice": 11.2,
+    "building": "706",
+    "floor": "5",
+    "size": 59,
+    "note": "",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
     "regDate": "2026-03-03",
     "contractDate": "",
     "moveInDate": "2027-01",
@@ -28,7 +42,7 @@
     "priceHistory": []
   },
   {
-    "regDate": "2026-02-23",
+    "regDate": "2026-03-05",
     "contractDate": "",
     "moveInDate": "2026-06",
     "actualPrice": null,
