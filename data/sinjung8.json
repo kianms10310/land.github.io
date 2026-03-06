@@ -239,11 +239,11 @@
     "moveInDate": "2026-05"
   },
   {
-    "regDate": "2026/02/27",
+    "regDate": "2026/03/06",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
-    "askingPrice": 11.5,
+    "askingPrice": 11.4,
     "building": "808",
     "floor": "19",
     "size": 59,
@@ -259,6 +259,10 @@
       },
       {
         "date": "2026-02-26",
+        "price": 11.5
+      },
+      {
+        "date": "2026-03-06",
         "price": 11.5
       }
     ],
