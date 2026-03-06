@@ -1,5 +1,19 @@
 [
   {
+    "regDate": "2026-03-06",
+    "contractDate": "",
+    "moveInDate": "2026-05",
+    "actualPrice": null,
+    "askingPrice": 11.5,
+    "building": "109",
+    "floor": "12",
+    "size": 59,
+    "note": "부분수리",
+    "isLocked": false,
+    "isInProgress": false,
+    "priceHistory": []
+  },
+  {
     "regDate": "2026-03-05",
     "contractDate": "",
     "moveInDate": "",
@@ -366,7 +380,7 @@
     "isInProgress": true
   },
   {
-    "regDate": "2026/02/03",
+    "regDate": "2026/03/06",
     "contractDate": "",
     "status": "시작 전",
     "actualPrice": null,
